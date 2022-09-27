@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/ProductSaleable
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="threshold_price_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>Disable Product</label>
+            <tab>toyota</tab>
+            <resource>Infosys_ProductSaleable::price_config</resource>
+            <group id="threshold_price_group" translate="label" type="text" sortOrder="10" canRestore="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Product Disable Threshold Price</label>
+                <field id="threshold_price" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Threshold Price</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <comment>Disable Products from the site if product price is less than or equal to this price</comment>
+                </field>
+            </group>
+            <group id="logs" translate="label" type="text" sortOrder="10" canRestore="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>                
+                <field id="logs_active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

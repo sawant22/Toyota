@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/Vehicle
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="catalog_vehicle_entity" resource="default" engine="innodb" comment="Vehicle Master Data">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="255" comment="Title"/>
+        <column xsi:type="varchar" name="brand" nullable="false" length="32" comment="Brand"/>
+        <column xsi:type="varchar" name="model_year" nullable="false" length="32" comment="Model Year"/>
+        <column xsi:type="varchar" name="model_code" nullable="false" length="32" comment="Model Code"/>
+        <column xsi:type="varchar" name="series_name" nullable="false" length="64" comment="Series Name"/>
+        <column xsi:type="varchar" name="grade" nullable="false" length="255" comment="Grade"/>
+        <column xsi:type="varchar" name="driveline" nullable="false" length="255" comment="Driveline"/>
+        <column xsi:type="varchar" name="body_style" nullable="true" length="255" comment="Body Style"/>
+        <column xsi:type="varchar" name="engine_type" nullable="true" length="255" comment="Engine Style"/>
+        <column xsi:type="varchar" name="model_range" nullable="true" length="255" comment="Model Range"/>
+        <column xsi:type="mediumtext" name="model_description" nullable="true" comment="Model Description"/>
+        <column xsi:type="varchar" name="transmission" nullable="true" length="128" comment="Transmission"/>
+        <column xsi:type="int" name="status" unsigned="true"  comment="Status" default="1"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CATALOG_VEHICLE_ENTITY_MODEL_YEAR_MODEL_CODE">
+            <column name="model_year"/>
+            <column name="model_code"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CATALOG_VEHICLE_ENTITY_UNIQUE_DATA" disabled="true">
+            <column name="model_year"/>
+            <column name="series_name"/>
+            <column name="driveline"/>
+            <column name="grade"/>
+        </constraint>
+        <index referenceId="INDEX_CATALOG_VEHICLE_ENTITY_MODEL_YEAR" indexType="btree">
+            <column name="model_year"/>
+        </index>
+         <index referenceId="INDEX_CATALOG_VEHICLE_ENTITY_MODEL_CODE" indexType="btree">
+            <column name="model_code"/>
+        </index>
+        <index referenceId="INDEX_CATALOG_VEHICLE_ENTITY_BRAND" indexType="btree">
+            <column name="brand"/>
+        </index>
+        <index referenceId="INDEX_CATALOG_VEHICLE_ENTITY_SERIES_NAME" indexType="btree">
+            <column name="series_name"/>
+        </index>
+    </table>
+    <table name="catalog_vehicle_product" resource="default" engine="innodb" comment="Vehicle Product Mapping">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Product ID"/>
+        <column xsi:type="int" name="vehicle_id" unsigned="true" nullable="false" comment="Vehicle ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CATALOG_VEHICLE_PRODUCT_VEHICLE_ID_PRODUCT_ID">
+            <column name="product_id"/>
+            <column name="vehicle_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CATALOG_VEHICLE_PRODUCT_VEHICLE_ID_CATALOG_VEHICLE_ENTITY_ENTIY_ID"
+                    table="catalog_vehicle_product" column="vehicle_id" referenceTable="catalog_vehicle_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="CATALOG_VEHICLE_PRODUCT_PRODUCT_ID_CAT_PRD_ENTT_ENTT_ID"
+                    table="catalog_vehicle_product" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+    <table name="vehicle_fits_queue" resource="default" engine="innodb" comment="Product Vehicle Fits">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+		<column xsi:type="int" name="product_id" unsigned="true" nullable="true" comment="Product Id"/>
+		<column xsi:type="int" name="store_id" unsigned="true" nullable="true" comment="Store Id"/>
+		<column xsi:type="int" name="product_flag" unsigned="true" nullable="true" default="0" comment="All Products Flag"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="vehicle_schedule_tasks" resource="default" engine="innodb" comment="Vehicle schedule tasks">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="file_name" nullable="true" comment="File name"/>
+        <column xsi:type="varchar" name="file_type" nullable="true" comment="File type"/>
+        <column xsi:type="int" name="status" unsigned="true"  comment="PENDING=0, RUNNING=1, SUCCESS=2, FAILURE=3" default="0"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="scheduled_at" on_update="false" nullable="false" comment="Scheduled At"/>
+        <column xsi:type="timestamp" name="created_at_sftp" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At SFTP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="VEHICLE_SCHEDULE_TASKS_FILE_NAMES">
+            <column name="file_name"/>
+        </constraint>
+    </table>
+    <table name="vehicle_data_replace" resource="default" engine="innodb" comment="Vehicle attribute data replace">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="attribute" nullable="true" length="255" comment="Vehicle Attribute"/>
+        <column xsi:type="varchar" name="find" nullable="true" length="255" comment="Find the vehicle attribute value"/>
+        <column xsi:type="varchar" name="replace" nullable="true" length="255" comment="Replace the vehicle attribute value"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>        
+    </table>
+</schema>

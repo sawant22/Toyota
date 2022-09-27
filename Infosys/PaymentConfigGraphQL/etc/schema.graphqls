@@ -1,0 +1,10 @@
+type Query {
+    storePaymentConfig : PaymentData
+        @resolver(class: "Infosys\\PaymentConfigGraphQL\\Model\\Resolver\\StorePaymentConfig")
+        @doc(description:"Payment configuratin details")
+}
+
+type PaymentData {
+    pub_api_key : String   @doc(description: "Public api key")
+    secret_api_key : String   @doc(description: "Secret api key")
+}

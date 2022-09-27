@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/AemBase
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="aem_cache" translate="label,description" instance="Infosys\AemBase\Model\Cache\AemCache">
+        <label>AEM Cache</label>
+        <description>Content cached from AEM like header and footer</description>
+    </type>
+</config>

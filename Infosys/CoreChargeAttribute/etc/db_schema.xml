@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CoreChargeAttribute
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote_item" resource="checkout" engine="innodb" comment="Sales Flat Quote Item">
+        <column xsi:type="decimal" name="core_charge" scale="2" precision="20" unsigned="false" nullable="false" default="0"
+                comment="Core Charge"/>
+        <column xsi:type="varchar" name="part_number" nullable="true" length="64" comment="Part Number"/>
+    </table>
+    <table name="sales_order_item" resource="sales" engine="innodb" comment="Sales Flat Order Item">
+        <column xsi:type="decimal" name="core_charge" scale="2" precision="20" unsigned="false" nullable="false" default="0"
+                comment="Core Charge"/>
+        <column xsi:type="varchar" name="part_number" nullable="true" length="64" comment="Part Number"/>    
+    </table>
+    <table name="sales_order" resource="sales" engine="innodb" comment="Sales Flat Order">
+        <column xsi:type="text" name="core_charge_details" nullable="true" comment="Core Charge Details"/>
+        <column xsi:type="decimal" name="total_core_charge" scale="2" precision="20" unsigned="false" nullable="true" default="0"
+                comment="Total Core Charge value"/>
+    </table>
+	<table name="quote" resource="checkout" engine="innodb" comment="Sales Flat Quote">
+        <column xsi:type="text" name="core_charge_details" nullable="true" comment="Core Charge Details"/>
+        <column xsi:type="decimal" name="total_core_charge" scale="2" precision="20" unsigned="false" nullable="true" default="0"
+                comment="Total Core Charge value"/>
+	</table> 
+</schema>

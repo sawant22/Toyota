@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/SearchByVIN
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="toyota" translate="label" sortOrder="10">
+            <label>Toyota</label>
+        </tab>
+        <section id="searchbyvin" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>VIS Configuration</label>
+            <tab>toyota</tab>
+            <resource>Infosys_SearchByVIN::searchbyvin_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Azure</label>
+                <field id="clientid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client ID</label>
+                </field>
+                <field id="clientsecret" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client Secret</label>
+                </field>
+                <field id="granttype" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Grant Type</label>
+                </field>
+                <field id="tokenurl" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Token Url</label>
+                </field>
+            </group>
+
+            <group id="general1" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>VIS Integration</label>
+                <field id="apiazureresource" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Azure Resource</label>
+                </field>
+                <field id="ibmclientid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>IBM Client ID</label>
+                </field>
+                <field id="bodyid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>BodyID</label>
+                </field>
+                <field id="visapiurl" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>VIS API Url</label>
+                </field>
+            </group>
+
+            <group id="logging_errors" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="vis_api_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Connection Timeout</label>
+                <field id="vis_connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>VIS Connection Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds</comment>
+                </field>
+                <field id="vis_request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>VIS Request Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

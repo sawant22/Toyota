@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/PaymentWebsiteAssociation
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="ParadoxLabs\TokenBase\Model\ResourceModel\CardRepository">
+        <plugin name="save_website_id" type="Infosys\PaymentWebsiteAssociation\Plugin\CardRepository" />
+    </type>
+    <type name="StripeIntegration\Payments\Helper\Generic">
+        <plugin name="save_website_id" type="Infosys\PaymentWebsiteAssociation\Plugin\Helper\Generic" />
+    </type>
+    <preference for="Magento\PaypalGraphQl\Model\Resolver\PaypalExpressToken" type="Infosys\PaymentWebsiteAssociation\Model\Resolver\PaypalExpressToken" />
+    <preference for="Magento\PaypalGraphQl\Model\Resolver\PayflowProToken" type="Infosys\PaymentWebsiteAssociation\Model\Resolver\PayflowProToken" />
+</config>

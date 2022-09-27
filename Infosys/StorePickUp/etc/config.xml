@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/StorePickUp
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <dealerstore>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Infosys\StorePickUp\Model\Carrier\StorePickUp</model>
+                <name>In Store Pickup</name>
+                <handling_type>F</handling_type>
+                <price>0.00</price>
+                <title>In Store Pickup</title>
+                <type>I</type>
+                <specificerrmsg>This shipping method is not available right now.</specificerrmsg>
+            </dealerstore>
+        </carriers>
+    </default>
+</config>

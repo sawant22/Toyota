@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CoreChargeAttribute
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+        <referenceContainer name="creditmemo_totals">
+            <block class="Infosys\CoreChargeAttribute\Block\Adminhtml\CreditMemo\View\CoreCharge" name="core_charge"/>
+        </referenceContainer>
+   </body>
+</page>

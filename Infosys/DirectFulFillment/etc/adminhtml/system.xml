@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright � 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="df_config" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40" translate="label">
+            <label>DirectFulfillment Configuration</label>
+            <tab>toyota</tab>
+            <resource>Infosys_PriceAdjustment::price_percentage</resource>
+            <group id="df_config_group" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Allowed US States in DirectFulfillment</label>
+                <field id="enable" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="select">
+                    <label>Enable DirectFulfillment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="us_state_filter" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Allowed US States in DirectFulfillment </label>
+                    <source_model>Infosys\DirectFulFillment\Model\Config\Region\RegionInformationProvider</source_model>
+                </field>
+                <field id="df_export_profile" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Select the Direct Fulfillment Export Profile</label>
+                    <source_model>Xtento\OrderExport\Model\System\Config\Source\Export\Profile</source_model>
+                </field>
+            </group>
+            <group id="df_accesstoken" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Access Token Settings</label>
+                <field id="client_id" translate="client_id" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Client ID</label>
+                    <comment>Azure Client or Application ID</comment>
+                </field>
+                <field id="resource" translate="resource" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Resource</label>
+                </field>
+                <field id="accesstokenUrl" translate="accesstokenUrl" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Access Token Url</label>
+                    <comment>Contains Tenant ID</comment>
+                </field>
+                <field id="jti" translate="jti" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>jti</label>
+                    <comment>TODO  potentially arbitrary.</comment>
+                </field>
+                <field id="x5t" translate="x5t" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>x5t Security Key ID</label>
+                    <comment>Base64 Thumbprint generated using powershell or node script on Private SSH Security Key. see //TODO link to confluence</comment>
+                </field>
+                <field id="grant_type" translate="jti" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Grant Type</label>
+                </field>
+                <field id="client_assertion_type" translate="jti" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Client Assertion Type</label>
+                </field>
+                <field id="connection_check" translate="label" type="button" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Infosys\DirectFulFillment\Block\System\Config\VerifyAzureConnection</frontend_model>
+                    <comment>Private SSH Security Key below also needs to be set for this</comment>
+                </field>
+            </group>
+            <group id="df_integration_settings" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Payload Integration Settings</label>
+                <field id="ddao_api_url" translate="DDOAAPIURL" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>DDOA Api Url</label>
+                </field>
+                <field id="CreatorNameCode" translate="CreatorNameCode" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Creator Name Code</label>
+                </field>
+                <field id="SenderNameCode" translate="SenderNameCode" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sender Name Code</label>
+                </field>
+                <field id="SystemVersion" translate="SystemVersion" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>System Version</label>
+                </field>
+                <field id="DestinationNameCode" translate="DestinationNameCode" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Destination Name Code</label>
+                </field>
+                <field id="securityCertificate" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>X509 Security Certificate</label>
+                </field>
+                <field id="security_key" translate="label" type="textarea" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Private SSH Security Key</label>
+                </field>
+            </group>
+            <group id="ddoa_logging_group" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>DDOA Logging</label>
+                <field id="ddoa_log" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="select">
+                    <label>Enable/Disable Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="ddoa_api_timeout" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Connection Timeout</label>
+                 <field id="ddoa_connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Connection Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds.</comment>
+                </field>
+                <field id="ddoa_request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Request Timeout</label>
+                    <comment>Set time in seconds.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

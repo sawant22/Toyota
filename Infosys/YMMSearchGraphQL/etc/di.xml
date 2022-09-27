@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Infosys/YMMSearchGraphQL
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Infosys\YMMSearchGraphQL\Logger\EFCLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">EFCLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\YMMSearchGraphQL\Logger\EFCHandler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--
+ * @package     Infosys/UpdateProductCount 
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">	
+   <type name="Magento\Elasticsearch\Model\Adapter\Index\Builder">
+        <plugin name="afterBuild" 
+               type="Infosys\UpdateProductCount\Plugin\Model\Adapter\Index\BuilderChange"
+               sortOrder="1" />
+    </type>
+    <type name="Magento\Search\Model\Search\PageSizeProvider">
+        <plugin name="afterGetMaxPageSize" 
+               type="Infosys\UpdateProductCount\Plugin\Model\Search\ProductCountProvider" 
+               sortOrder="1" />
+    </type>
+    <type name="Magento\Config\Model\Config">
+        <plugin name="admin_system_config_save_plugin" type="Infosys\UpdateProductCount\Plugin\ConfigPlugin" sortOrder="1"/>
+    </type>
+</config>

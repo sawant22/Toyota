@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="media_set" resource="default" engine="innodb" comment="media set">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="int" name="website" nullable="false" comment="Website"/>
+        <column xsi:type="varchar" name="media_set_selector" nullable="false" length="100" comment="media set selector"/>
+        <column xsi:type="smallint" name="tier_price_product_type" unsigned="true" nullable="false" comment="Tier Price Product Type"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="EAV_ATTRIBUTE_ATTRIBUTE_SET_ID_MEDIA_SET_ENTITY_ID" table="media_set" column="tier_price_product_type" referenceTable="eav_attribute_set" referenceColumn="attribute_set_id"/>
+    </table>
+    <table name="brand_product_type_media_set" resource="default" engine="innodb" comment="media set">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="dealer_brand" nullable="false" comment="Dealer Brand"/>
+        <column xsi:type="smallint" name="product_type" unsigned="true" nullable="false" comment="Product Type"/>
+        <column xsi:type="int" name="media_set_selector" nullable="false" comment="Media Set Selector"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="EAV_ATTRIBUTE_ATTRIBUTE_SET_ID_BRAND_PRODUCT_TYPE_MEDIA_SET_PRODUCT_TYPE" table="brand_product_type_media_set" column="product_type" referenceTable="eav_attribute_set" referenceColumn="attribute_set_id"/>
+        <constraint xsi:type="unique" referenceId="BRAND_PRODUCT_TYPE_MEDIA_SET_SELECTOR">            
+            <column name="dealer_brand"/>
+            <column name="product_type"/>
+            <column name="media_set_selector"/>
+        </constraint>
+    </table>
+    <table name="tier_price" resource="default" engine="innodb" comment="Tier Price">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="int" name="entity_id" nullable="false" unsigned="true" comment="Media Set Id"/>
+        <column xsi:type="varchar" name="from_price" nullable="false" length="100" comment="From Price"/>
+        <column xsi:type="varchar" name="to_price" nullable="false" length="100" comment="To Price"/>
+        <column xsi:type="int" name="adjustment_type" nullable="false" comment="Adjustment Type"/>
+        <column xsi:type="int" name="position" nullable="false" comment="Position"/>
+        <column xsi:type="float" name="percentage" nullable="false" comment="Percentage"/>
+        <column xsi:type="int" name="website" nullable="false" comment="Website"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MEDIA_SET_ENTITY_ID_TIER_PRICE_ENTITY_ID" table="tier_price" column="entity_id" referenceTable="media_set" referenceColumn="entity_id"/>
+    </table>
+    <table name="tier_queue" resource="default" engine="innodb" comment="Tier Price">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="sku" nullable="false" length="100" comment="Product sku"/>
+        <column xsi:type="text" name="website" nullable="false" comment="Website"/>
+        <column xsi:type="mediumtext" name="tier_price_set" nullable="false" comment="Tier Price Set"/>
+        <column xsi:type="mediumtext" name="tier_price_product_type" nullable="false" comment="Tier Price Product Type"/>
+        <column xsi:type="varchar" name="special_price_update_status" nullable="false" comment="Special Price Update Status"/>
+        <column xsi:type="varchar" name="old_product_price" nullable="false" length="100" comment="Old Product Price"/>
+        <column xsi:type="mediumtext" name="old_tierprice_id" nullable="false" comment="Old Tier Price Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+         <index referenceId="INDEX_TIER_QUEUE_SKU" indexType="btree">
+            <column name="sku"/>
+        </index>
+    </table>
+</schema>

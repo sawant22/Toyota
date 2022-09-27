@@ -1,0 +1,74 @@
+input CartItemInput {
+    vin_number: String
+    vehicle_name: String
+    fitment_notice: String
+    fitment_status: String
+}
+interface OrderItemInterface @doc(description: "Order item details") @typeResolver(class: "Magento\\SalesGraphQl\\Model\\TypeResolver\\OrderItem") {
+    vin_number: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+    vehicle_name: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+    fitment_notice: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+    fitment_status: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+    product_image: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemImage")
+    product_price: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderItemPrice")
+}
+interface CartItemInterface @typeResolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CartItemTypeResolver") {
+    fitment_notice: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Quote\\QuoteItemAttribute")
+    fitment_status: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Quote\\QuoteItemAttribute")
+    vin_number: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Quote\\QuoteItemAttribute")
+    vehicle_name: String @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Quote\\QuoteItemAttribute")
+}
+type CustomerOrder @doc(description: "Contains details about each of the customer's orders") {
+    dealerInformation: DealerInformation @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderWebsiteDetails")
+}
+type DealerInformation {
+    dealer_name: String
+    street_address: String
+    region: String
+    city: String
+    country: String
+    postcode: String
+    phone_number: String
+    store_email: String
+}
+
+type Mutation {
+    checkoutItemData(input: CheckoutItemsDataInput) : CheckoutItemsDataOutput @resolver(class:"Infosys\\OrderAttribute\\Model\\Resolver\\Checkout\\CheckoutAttribute")
+}
+input CheckoutItemsDataInput {
+    cartId: String
+    cart_items: [ProductData]
+}
+input ProductData {
+    item_id: String
+    fitment_message: String
+    fitment_status: String
+    vin_number: String
+    vehicle_name: String
+}
+type CheckoutItemsDataOutput {
+    output: String
+}
+
+type OrderPaymentMethod @doc(description: "Contains details about the payment method used to pay for the order") {
+    cc_type: String
+    cc_exp_year: String
+    cc_last_4: String
+    cc_exp_month: String
+}
+
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    store_address: StoreAddress @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\StoreConfig\\StoreAddress")
+}
+type StoreAddress {
+    dealer_name: String
+    street_address1: String
+    street_address2: String
+    city: String
+    region_code: String
+    region_name: String
+    country: String
+    postcode: String
+    phone_number: String
+    store_email: String
+}

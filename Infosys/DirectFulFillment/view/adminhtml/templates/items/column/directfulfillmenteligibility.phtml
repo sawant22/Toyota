@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+
+$data = $block->getItem();
+if ($data['direct_fulfillment_eligibility']) {
+    echo __("YES");
+} else {
+    echo __("No");
+}

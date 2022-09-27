@@ -1,0 +1,4 @@
+
+type Attribute @doc(description: "Attribute contains the attribute_type of the specified attribute_code and entity_type") {
+    attribute_flag: Int @resolver(class: "Infosys\\AttributeField\\Model\\Resolver\\FieldValue") @doc(description: "Attribute options list.")
+}

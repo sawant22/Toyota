@@ -1,0 +1,62 @@
+{
+    "media_set": {
+        "column": {
+            "entity_id": true,
+            "media_set_selector": true,
+            "percentage": true,
+            "website": true,
+            "tier_price_product_type": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MDA_SET_TIER_PRICE_PRD_TYPE_EAV_ATTR_SET_ATTR_SET_ID": true
+        }
+    },
+    "tier_price": {
+        "column": {
+            "id": true,
+            "entity_id": true,
+            "from_price": true,
+            "to_price": true,
+            "adjustment_type": true,
+            "position": true,
+            "percentage": true,
+            "website": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TIER_PRICE_ENTITY_ID_MEDIA_SET_ENTITY_ID": true
+        }
+    },
+    "tier_queue": {
+        "column": {
+            "entity_id": true,
+            "sku": true,
+            "website": true,
+            "tier_price_set": true,
+            "special_price_update_status": true,
+            "tier_price_product_type": true,
+            "old_product_price": true,
+            "old_tierprice_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        },
+        "index": {
+            "TIER_QUEUE_SKU": true
+        }
+    },
+    "brand_product_type_media_set": {
+        "column": {
+            "entity_id": true,
+            "dealer_brand": true,
+            "product_type": true,
+            "media_set_selector": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "BRAND_PRD_TYPE_MDA_SET_PRD_TYPE_EAV_ATTR_SET_ATTR_SET_ID": true,
+            "BRAND_PRD_TYPE_MDA_SET_DEALER_BRAND_PRD_TYPE_MDA_SET_SELECTOR": true
+        }
+    }
+}

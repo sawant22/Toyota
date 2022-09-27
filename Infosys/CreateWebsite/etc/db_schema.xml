@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CreateWebsite
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="store_website" resource="default" engine="innodb" comment="Websites">
+        <column xsi:type="varchar" name="dealer_code" nullable="true" length="32" comment="Dealer Code"/>
+        <column xsi:type="int" name="region_id" unsigned="true" nullable="false" comment="Region Id"/>
+        <index referenceId="REGION_ID" indexType="btree">
+            <column name="region_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="REGION_ID_FOREIGN" table="store_website"
+                    column="region_id" referenceTable="toyota_dealer_regions" referenceColumn="id"
+                    onDelete="NO ACTION"/>
+    </table>
+    <table name="toyota_dealer_regions" resource="default" engine="innodb" comment="Dealer Regions">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Primary key"/>
+        <column xsi:type="varchar" name="region_code" nullable="true" length="32" comment="Region Code"/>
+        <column xsi:type="varchar" name="region_label" nullable="false" length="255" comment="Region Label"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

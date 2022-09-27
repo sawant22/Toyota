@@ -1,0 +1,15 @@
+type Products @doc(description: "The Products object is the top-level object returned in a product search.") {
+    vehicle_details : VehicleDetails
+    search_terms: [String]
+}
+
+type VehicleDetails {
+    entity_id : String
+    model_year : String
+    model_code : String
+    series_name : String
+    grade : String
+    driveline : String
+    body_style : String
+    vehicle_image : String
+}

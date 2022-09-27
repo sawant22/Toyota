@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/VehicleSearch
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<requests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:framework:Search/etc/search_request.xsd">
+    <request query="graphql_product_search_with_aggregation" index="catalogsearch_fulltext">
+        <queries>
+            <query xsi:type="boolQuery" name="graphql_product_search_with_aggregation" boost="1">
+                <queryReference clause="must" ref="model_year"/>
+                <queryReference clause="must" ref="model_code"/>
+                <queryReference clause="must" ref="model_year_code"/>
+                <queryReference clause="must" ref="brand"/>
+                <queryReference clause="must" ref="vehicle_entity_id"/>
+                <queryReference clause="must" ref="series_name"/>
+                <queryReference clause="must" ref="grade"/>
+                <queryReference clause="must" ref="driveline"/>
+                <queryReference clause="must" ref="body_style"/>
+                <queryReference clause="must" ref="engine_type"/>
+                <queryReference clause="must" ref="transmission"/>
+            </query>
+            <query xsi:type="matchQuery" value="$search_term$" name="search">
+                <match field="model_year"/>
+                <match field="series_name"/>
+                <match field="grade"/>
+                <match field="driveline"/>
+                <match field="body_style"/>
+                <match field="engine_type"/>
+                <match field="transmission"/>
+            </query>
+            <query xsi:type="matchQuery" value="$search_term$" name="partial_search">
+                <match field="model_year" matchCondition="match_phrase_prefix"/>
+                <match field="brand" matchCondition="match_phrase_prefix"/>
+                <match field="series_name" matchCondition="match_phrase_prefix"/>
+                <match field="grade" matchCondition="match_phrase_prefix"/>
+                <match field="driveline" matchCondition="match_phrase_prefix"/>
+                <match field="engine_type" matchCondition="match_phrase_prefix"/>
+                <match field="body_style" matchCondition="match_phrase_prefix"/>
+                <match field="transmission" matchCondition="match_phrase_prefix"/>
+            </query>
+            <query name="model_year" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="model_year_filter"/>
+            </query>
+            <query name="model_code" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="model_code_filter"/>
+            </query>
+            <query name="model_year_code" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="model_year_code_filter"/>
+            </query>
+            <query name="brand" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="brand_filter"/>
+            </query>
+            <query name="vehicle_entity_id" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="vehicle_entity_id_filter"/>
+            </query>
+            <query name="series_name" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="series_name_filter"/>
+            </query>
+            <query name="grade" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="grade_filter"/>
+            </query>
+            <query name="driveline" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="driveline_filter"/>
+            </query>
+            <query name="body_style" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="body_style_filter"/>
+            </query>
+            <query name="engine_type" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="engine_type_filter"/>
+            </query>
+            <query name="transmission" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="transmission_filter"/>
+            </query>
+        </queries>
+        <filters>
+            <filter xsi:type="termFilter" name="model_year_filter" field="model_year" value="$model_year$"/>
+            <filter xsi:type="termFilter" name="model_code_filter" field="model_code" value="$model_code$"/>
+            <filter xsi:type="termFilter" name="model_year_code_filter" field="model_year_code" value="$model_year_code$"/>
+            <filter xsi:type="termFilter" name="brand_filter" field="brand" value="$brand$"/>
+            <filter xsi:type="termFilter" name="vehicle_entity_id_filter" field="vehicle_entity_id" value="$vehicle_entity_id$"/>
+            <filter xsi:type="termFilter" name="series_name_filter" field="series_name" value="$series_name$"/>
+            <filter xsi:type="termFilter" name="grade_filter" field="grade" value="$grade$"/>
+            <filter xsi:type="termFilter" name="driveline_filter" field="driveline" value="$driveline$"/>
+            <filter xsi:type="termFilter" name="body_style_filter" field="body_style" value="$body_style$"/>
+            <filter xsi:type="termFilter" name="engine_type_filter" field="engine_type" value="$engine_type$"/>
+            <filter xsi:type="termFilter" name="transmission_filter" field="transmission" value="$transmission$"/>
+        </filters>
+        <aggregations>
+            <bucket name="model_year_bucket" field="model_year" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="series_name_bucket" field="series_name" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="grade_bucket" field="grade" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="driveline_bucket" field="driveline" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="body_style_bucket" field="body_style" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="engine_type_bucket" field="engine_type" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="transmission_bucket" field="transmission" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+        </aggregations>
+        <from>0</from>
+        <size>10000</size>
+    </request>
+    <request query="graphql_vehicle_search_with_aggregation" index="vehicle_indexer_index">
+        <dimensions>
+            <dimension name="scope" value="default"/>
+        </dimensions>
+        <queries>
+            <query xsi:type="boolQuery" name="graphql_vehicle_search_with_aggregation" boost="1">
+                <queryReference clause="must" ref="model_year"/>
+                <queryReference clause="must" ref="model_code"/>
+                <queryReference clause="must" ref="brand"/>
+                <queryReference clause="must" ref="series_name"/>
+                <queryReference clause="must" ref="grade"/>
+                <queryReference clause="must" ref="driveline"/>
+                <queryReference clause="must" ref="status"/>
+                <queryReference clause="must" ref="body_style"/>
+                <queryReference clause="must" ref="engine_type"/>
+                <queryReference clause="must" ref="transmission"/>
+            </query>
+            <query name="model_year" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="model_year_filter"/>
+            </query>
+            <query name="model_code" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="model_code_filter"/>
+            </query>
+            <query name="brand" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="brand_filter"/>
+            </query>
+            <query name="series_name" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="series_name_filter"/>
+            </query>
+            <query name="grade" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="grade_filter"/>
+            </query>
+            <query name="driveline" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="driveline_filter"/>
+            </query>
+            <query name="status" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="status_filter"/>
+            </query>
+            <query name="body_style" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="body_style_filter"/>
+            </query>
+            <query name="engine_type" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="engine_type_filter"/>
+            </query>
+            <query name="transmission" xsi:type="filteredQuery">
+                <filterReference clause="must" ref="transmission_filter"/>
+            </query>
+        </queries>
+        <filters>
+            <filter xsi:type="termFilter" name="model_year_filter" field="model_year" value="$model_year$"/>
+            <filter xsi:type="termFilter" name="model_code_filter" field="model_code" value="$model_code$"/>
+            <filter xsi:type="termFilter" name="brand_filter" field="brand" value="$brand$"/>
+            <filter xsi:type="termFilter" name="series_name_filter" field="series_name" value="$series_name$"/>
+            <filter xsi:type="termFilter" name="grade_filter" field="grade" value="$grade$"/>
+            <filter xsi:type="termFilter" name="driveline_filter" field="driveline" value="$driveline$"/>
+            <filter xsi:type="termFilter" name="status_filter" field="status" value="$status$"/>
+            <filter xsi:type="termFilter" name="body_style_filter" field="body_style" value="$body_style$"/>
+            <filter xsi:type="termFilter" name="engine_type_filter" field="engine_type" value="$engine_type$"/>
+            <filter xsi:type="termFilter" name="transmission_filter" field="transmission" value="$transmission$"/>
+        </filters>
+        <aggregations>
+            <bucket name="model_year_bucket" field="model_year" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="series_name_bucket" field="series_name" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="grade_bucket" field="grade" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="driveline_bucket" field="driveline" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="body_style_bucket" field="body_style" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="engine_type_bucket" field="engine_type" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+            <bucket name="transmission_bucket" field="transmission" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+        </aggregations>
+        <from>0</from>
+        <size>10000</size>
+    </request>
+</requests>

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+?>
+<?php
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="rh_products" data-form-part="custom_form" id="rh_products" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Infosys_Vehicle/js/assign-products": {
+                "selectedProducts":  <?= /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+            }
+        }
+    }
+</script>
+<script>
+    require('mage/apply/main').apply();
+</script>

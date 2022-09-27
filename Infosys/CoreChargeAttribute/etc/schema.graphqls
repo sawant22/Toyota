@@ -1,0 +1,51 @@
+input CartItemInput {
+    core_charge: String
+}
+interface OrderItemInterface @doc(description: "Order item details") @typeResolver(class: "Magento\\SalesGraphQl\\Model\\TypeResolver\\OrderItem") {
+    core_charge: String @resolver(class: "Infosys\\CoreChargeAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+    part_number: String @resolver(class: "Infosys\\CoreChargeAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+}
+interface CartItemInterface @typeResolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CartItemTypeResolver") {
+    core_charge: String @resolver(class: "Infosys\\CoreChargeAttribute\\Model\\Resolver\\Quote\\QuoteItemAttribute")
+    part_number: String @resolver(class: "Infosys\\CoreChargeAttribute\\Model\\Resolver\\Order\\OrderItemAttribute")
+}
+
+type Cart {
+    core_charge_details: QuoteCoreChargeData @doc(description: "Quote Core Charge details") @resolver(class:"Infosys\\CoreChargeAttribute\\Model\\Resolver\\Quote\\QuoteCoreChargeDetails")
+}
+
+type QuoteCoreChargeData {
+    totalCoreCharge : String
+    individual: [productData]
+}
+
+type productData {
+    sku : String
+    part_number : String
+    quantity : String
+    core_charge : String
+}
+
+type CustomerOrder {
+    core_charge_details: OrderCoreChargeData
+	@doc(description: "Order Core Charge details")
+	@resolver(class:"Infosys\\CoreChargeAttribute\\Model\\Resolver\\Order\\OrderCoreChargeDetails")
+}
+
+type OrderSuccessDetail {
+    core_charge_details: OrderCoreChargeData
+    @doc(description: "Order Core Charge details") 
+    @resolver(class:"Infosys\\CoreChargeAttribute\\Model\\Resolver\\Order\\OrderCoreChargeDetails")
+}
+
+type OrderCoreChargeData {
+    totalCoreCharge : String
+    individual: [productData]
+}
+
+type productData {
+    sku : String
+    part_number : String
+    quantity : String
+    core_charge : String
+}

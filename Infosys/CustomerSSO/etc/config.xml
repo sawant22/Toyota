@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CustomerSSO
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dcs>
+            <sso_redirect>
+                <sso_redirect_url>https://stage-autoparts.toyota.com/</sso_redirect_url>
+            </sso_redirect>
+             <dcs_api_timeout>
+                <dcs_connection_timeout>5</dcs_connection_timeout>
+                <dcs_request_timeout>5</dcs_request_timeout>
+            </dcs_api_timeout>
+        </dcs>
+    </default>
+</config>

@@ -1,0 +1,23 @@
+type Query {
+    vehicleData (
+       vin : String @doc(description: "VIN of vehicles")
+    ) : VehicleCollection
+    @resolver(class: "Infosys\\SearchByVIN\\Model\\Resolver\\VehicleResolver")
+}
+
+type VehicleCollection @doc(description: "getting data for specific attributes") {
+    allRecords : [VehicleRecord] @doc(description: "vehicle data based on VIN")
+    message : String @doc(description: "Response Message")
+}
+
+type VehicleRecord @doc(description: "graphql gather Data of specific attribute information") {
+    entity_id : String @doc(description: "ID of the vehicle")
+    model_year: Int   @doc(description: "Model Year of the vehicle")
+    model_code: String    @doc(description: "Model Code of the vehicle")
+    make: String    @doc(description: "make of the vehicle")
+    model_name: String    @doc(description: "model name of the vehicle")
+	grade: String @doc(description: "Grade of the vehicle")
+	driveline : String @doc(description: "Driveline of the vehicle")
+    body_style : String @doc(description: "Body Style of the vehicle")
+    vehicle_image: String  @doc(description: "Image of the vehicle")
+}

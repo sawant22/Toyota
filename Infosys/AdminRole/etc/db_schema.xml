@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/AdminRole
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<!-- Additional columns in admin_user to link user to website -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="admin_user" resource="default" engine="innodb" comment="Admin User Table">
+        <column xsi:type="text" name="website_ids" nullable="true" comment="Comma-separated Website Ids"/>
+        <column xsi:type="int" name="all_website" unsigned="false" nullable="false" default="1" comment="Yes/No Flag"/>
+    </table>
+</schema>

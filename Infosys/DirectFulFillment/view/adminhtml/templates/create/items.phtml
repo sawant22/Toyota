@@ -1,0 +1,132 @@
+<?php
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Items to Ship')) ?></span>
+    </div>
+    <div class="admin__table-wrapper">
+        <table class="data-table admin__table-primary order-shipment-table">
+            <thead>
+                <tr class="headings">
+                    <th class="col-product"><span><?= $block->escapeHtml(__('Product')) ?></span></th>
+                    <th class="col-ordered-qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></th>
+                    <th class="col-qty last">
+                        <span><?= $block->escapeHtml(__('Send To Direct Fulfillment')) ?></span>
+                    </th>
+                </tr>
+            </thead>
+            <?php $_items = $block->getShipment()->getAllItems() ?>
+            <?php $_i = 0;
+            foreach ($_items as $_item):
+                if ($_item->getOrderItem()->getParentItem()):
+                    continue;
+                endif;
+                $_i++;
+                if ($_item->getOrderItem()->getDirectFulfillmentEligibility()):
+                    ?>
+
+                    <tbody class="<?= $_i % 2 ? 'odd' : 'even' ?>">
+                        <?= $block->getItemHtml($_item) ?>
+                        <?= $block->getItemExtraInfoHtml($_item->getOrderItem()) ?>
+                    </tbody>
+            <?php endif;
+            endforeach; ?>
+        </table>
+    </div>
+</section>
+<section class="admin__page-section">
+    <div class="admin__page-section-item order-totals order-totals-actions">
+        <div class="admin__page-section-item-content">
+            <?= $block->getChildHtml('submit_before') ?>
+            <div class="order-history-comments-actions actions">
+                <?= $block->getChildHtml('submit_df_button') ?>
+                <?= $block->getChildHtml('submit_after') ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php $scriptString = <<<script
+
+require([
+    "jquery",
+    "Magento_Ui/js/modal/alert",
+    "prototype"
+], function(jQuery, alert){
+
+//<![CDATA[
+var sendEmailCheckbox = $('send_email');
+if (sendEmailCheckbox) {
+    var notifyCustomerCheckbox = $('notify_customer');
+    var shipmentCommentText = $('shipment_comment_text');
+    Event.observe(sendEmailCheckbox, 'change', bindSendEmail);
+    bindSendEmail();
+}
+function bindSendEmail() {
+    if (sendEmailCheckbox.checked == true) {
+        notifyCustomerCheckbox.disabled = false;
+    }
+    else {
+        notifyCustomerCheckbox.disabled = true;
+    }
+}
+window.toggleCreateLabelCheckbox = function() {
+    var checkbox = $('create_shipping_label');
+    var submitButton = checkbox.up('.order-totals').select('.submit-button span')[0];
+    if (checkbox.checked) {
+        submitButton.innerText += '...';
+    } else {
+        submitButton.innerText = submitButton.innerText.replace(/\.\.\.$/, '');
+    }
+}
+window.submitShipment = function(btn) {
+    if (!validDFItems()) {
+        alert({
+            content: '{$block->escapeJs(__('No Items selected for Direct Fulfillment'))}'
+        });
+        return;
+    }
+    var checkbox = $(btn).up('.order-totals').select('#create_shipping_label')[0];
+    if (checkbox && checkbox.checked) {
+        packaging.showWindow();
+    } else {
+        disableElements('submit-button');
+        // Temporary solution will be replaced after refactoring order functionality
+        jQuery('#edit_form').on('invalid-form.validate', function() {
+            enableElements('submit-button');
+            jQuery('#edit_form').off('invalid-form.validate');
+        });
+        jQuery('#edit_form').triggerHandler('save');
+    }
+}
+window.validDFItems = function() {
+    var valid = false;
+    $$('.direct_fulfillment_status').each(function(item) {
+        var val = parseFloat(item.value);
+        if (val) {
+            valid = true;
+        }
+    });
+    return valid;
+}
+
+window.bindSendEmail = bindSendEmail;
+
+window.shipmentCommentText = shipmentCommentText;
+window.notifyCustomerCheckbox = notifyCustomerCheckbox;
+window.sendEmailCheckbox = sendEmailCheckbox;
+//]]>
+
+});
+
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>

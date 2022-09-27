@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Xtento_OrderExport:etc/xtento/orderexport_settings.xsd">
+    <settings>
+        <setting name="custom_allowed_php_functions">Infosys\DirectFulFillment\Helper\Xsl::getDealerCode,Infosys\DirectFulFillment\Helper\Xsl::getTimeFormat,Infosys\DirectFulFillment\Helper\Xsl::getUuid,Infosys\DirectFulFillment\Helper\Xsl::getTotalDealerShippingAmount,Infosys\DirectFulFillment\Helper\Xsl::isDirectFulfillmentOrder,Infosys\DirectFulFillment\Helper\Xsl::getWebsiteUrl,Infosys\DirectFulFillment\Helper\Xsl::getNotes,Infosys\DirectFulFillment\Helper\Xsl::getEtaDate,Infosys\DirectFulFillment\Helper\Xsl::getDoaAcceptedDate</setting>
+    </settings>
+</config>

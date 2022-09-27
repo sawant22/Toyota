@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/Vehicle
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <epc_config>
+            <cron_settings>
+                <cron_sleep_time>10</cron_sleep_time>
+            </cron_settings>
+            <logging_errors>
+                <active>0</active>
+            </logging_errors>            
+            <product_vehicle_fitment>
+                <maximum_product_count>3000</maximum_product_count>
+            </product_vehicle_fitment>
+            <import_settings>
+                <errors_count>100</errors_count>
+                <validation_type>0</validation_type>
+                <fitment_import>1</fitment_import>
+                <fitment_calc_cron>1</fitment_calc_cron>
+                <mapping_import>1</mapping_import>
+            </import_settings>
+            <vehicle_data_replace>
+                <vehicle_data_find_replace>0</vehicle_data_find_replace>
+            </vehicle_data_replace>
+        </epc_config>
+        <dealer_brand>
+            <brand_config>
+                <brand_filter>TOYOTA,SCION</brand_filter>
+            </brand_config>
+        </dealer_brand>
+    </default>
+</config>

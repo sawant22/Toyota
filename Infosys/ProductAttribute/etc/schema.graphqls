@@ -1,0 +1,9 @@
+interface ProductInterface @typeResolver(class: "Magento\\CatalogGraphQl\\Model\\ProductInterfaceTypeResolverComposite") @doc(description: "The ProductInterface contains attributes that are common to all types of products. Note that descriptions may not be available for custom and EAV attributes.") {
+       custom_attributes: [AttributeLabels] @doc(description: "Custom Attributes Label") @resolver(class: "Infosys\\ProductAttribute\\Model\\Resolver\\Product\\AttributeLabel")
+}
+type AttributeLabels @doc(description: "all dropdown Attributes to show in Product Details Page") {
+    attribute_code : String  @doc(description: "all atributes code")
+    attribute_label : String  @doc(description: "all atributes label")
+    attribute_value : String  @doc(description: "all atributes value")
+    visibility_status : String  @doc(description: "attribute visibility on frontend")
+}

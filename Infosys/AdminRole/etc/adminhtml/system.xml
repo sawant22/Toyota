@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/AdminRole
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Adding website mapping field in sso admin login -->
+        <section id="pitbulk_saml2_admin" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="attr_mapping" translate="label comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="website_ids" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Website</label>
+                </field>
+                <field id="region_code" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Region</label>
+                </field>
+                <field id="corporate_region_code" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Corporate Region</label>
+                </field>
+                <field id="admin_role_code" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Admin Role Code</label>
+                    <comment>
+                        <![CDATA[admin role to map all website permission]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

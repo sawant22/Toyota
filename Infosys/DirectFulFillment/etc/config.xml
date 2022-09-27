@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <df_config>
+            <ddoa_logging_group>
+                <ddoa_log>1</ddoa_log>
+            </ddoa_logging_group>
+            <ddoa_api_timeout>
+                <ddoa_connection_timeout>5</ddoa_connection_timeout>
+                <ddoa_request_timeout>5</ddoa_request_timeout>
+            </ddoa_api_timeout>
+        </df_config>
+    </default>
+</config>

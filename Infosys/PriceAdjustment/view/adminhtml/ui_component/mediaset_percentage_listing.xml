@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mediaset_percentage_listing.mediaset_percentage_listing_data_source</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Row</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/addrow</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>mediaset_percentage_columns</spinner>
+        <deps>
+            <dep>mediaset_percentage_listing.mediaset_percentage_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mediaset_percentage_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <!-- unique name for the grid -->
+            <argument name="class" xsi:type="string">Infosys\PriceAdjustment\Model\DataProvider</argument>
+            <!-- name of the data source same as in argument/js_config/provider -->
+            <argument name="name" xsi:type="string">mediaset_percentage_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+         <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+               <item name="selectProvider" xsi:type="string">mediaset_percentage_listing.mediaset_percentage_listing.mediaset_percentage_columns.ids</item>
+               <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+               <item name="indexField" xsi:type="string">id</item>
+            </item>
+         </argument>
+         <action name="is_delete">
+            <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                  <item name="type" xsi:type="string">delete</item>
+                  <item name="label" xsi:type="string" translate="true">Delete</item>
+                  <item name="url" xsi:type="url" path="mediaset/percentage/massDelete" />
+                  <item name="confirm" xsi:type="array">
+                     <item name="title" xsi:type="string" translate="true">Delete items</item>
+                     <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                  </item>
+               </item>
+            </argument>
+         </action>
+      </massaction>
+        <paging name="listing_paging"/>
+        <!--mediaset_percentage_listing.mediaset_percentage_listing.listing_top.action_decline -->
+    </listingToolbar>
+    <columns name="mediaset_percentage_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">mediaset_percentage_listing.mediaset_percentage_listing.mediaset_percentage_columns.actions</item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">view</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="website" class="Infosys\PriceAdjustment\Ui\Component\Listing\Column\Website">
+            <settings>
+                <options class="Infosys\PriceAdjustment\Ui\Component\CartLog\Localisation\Options"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Website</label>
+            </settings>
+        </column>
+        <column name="tier_price_product_type" class="Infosys\PriceAdjustment\Ui\Component\Listing\Column\ProductType">
+            <settings>
+                <options class="Infosys\PriceAdjustment\Model\Config\Source\SetProductTypeOptions"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Product type</label>
+            </settings>
+        </column>
+        <column name="media_set_selector" class="Infosys\PriceAdjustment\Ui\Component\Listing\Column\Mediaset">
+            <settings>
+                <options class="Infosys\PriceAdjustment\Model\Config\Source\SetGridMediaSetOptions"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Media set</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">mediaset/percentage/edit</item>
+                    <item name="urlEntityParamName" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

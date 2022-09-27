@@ -1,0 +1,26 @@
+{
+    "quote_item": {
+        "column": {
+            "core_charge": true,
+            "part_number": true
+        }
+    },
+    "sales_order_item": {
+        "column": {
+            "core_charge": true,
+            "part_number": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "core_charge_details": true,
+            "total_core_charge": true
+        }
+    },
+    "quote": {
+        "column": {
+            "core_charge_details": true,
+            "total_core_charge": true
+        }
+    }
+}

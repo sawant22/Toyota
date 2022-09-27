@@ -1,0 +1,74 @@
+<?php
+/**
+ * @package   Infosys/SalesReport
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+
+$collection = $block->prepareRankData();
+    ?>
+    <div class="admin__data-grid-header-row">
+        <div class="admin__data-grid-export" style="float:right;">
+            <label for="<?= $block->escapeHtmlAttr($block->getId()) ?>_export" class="admin__control-support-text">
+                <?= $block->escapeHtml(__('Export to:')) ?>
+            </label>
+            <select name="<?= $block->escapeHtmlAttr($block->getId()) ?>_export" id="dealerrank_export" class="admin__control-select">
+                <?php foreach ($block->getExportTypes() as $_type) : ?>
+                    <option value="<?= $block->escapeHtmlAttr($_type->getUrl()) ?>"><?= $block->escapeHtml($_type->getLabel()) ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button id="id_exportdealerrank_csv" title="Export" type="button" class="action-default scalable task" onclick="exportdealerrank()">
+                <span>Export</span>
+            </button>
+        </div>
+    </div>
+    <div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+        <table class="data-grid" id="<?= $block->escapeHtmlAttr($block->getId()) ?>_table">
+            <thead>
+                <tr>
+                    <th class="data-grid-th" colspan="1" rowspan="2">Dealer Name</th>
+                    <th class="data-grid-th" colspan="1" rowspan="2">Metric</th>
+                    <th class="data-grid-th" colspan="1" rowspan="2">Your performance</th>
+                    <th class="data-grid-th" colspan="3" style="text-align:center">Other Performance</th>
+                    <th class="data-grid-th" colspan="1" rowspan="2">Rank</th>
+                </tr>
+                <tr>
+                    <th class="data-grid-th">Low</th>
+                    <th class="data-grid-th">Medium</th>
+                    <th class="data-grid-th">High</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    if(isset($collection['data']) && count($collection['data']) > 0 && $collection['filter'] ==1 )
+                    {
+                        $count=1;
+                        foreach($collection['data'] as $item)
+                        {
+                            ?>
+                                <tr>
+                                    <?php if($count ==1) {
+                                       echo "<td rowspan='15' style='border-bottom:0.1rem solid #d6d6d6'>".$collection['dealerName']."</td>";
+                                    } ?>
+                                    <td><?php echo $item['metric_label'] ?></td>
+                                    <td><?php echo $item['your_performance'] ?></td>
+                                    <td><?php echo $item['low_dealer'] ?></td>
+                                    <td><?php echo $item['medium_dealer'] ?></td>
+                                    <td><?php echo $item['high_dealer'] ?></td>
+                                    <td><?php echo $item['dealer_rank'] ?></td>
+                                </tr>
+                            <?php
+                            $count++;
+                        }
+                    }
+                    else if($collection['filter'] ==1)
+                    {
+                        echo "<tr class='data-grid-tr-no-data even'><td class='empty-text' colspan='7'>We couldn't find any records.</td></tr>";
+                    }
+                ?>
+                <tbody>
+        </table>
+    </div>
+    <?php
+?>

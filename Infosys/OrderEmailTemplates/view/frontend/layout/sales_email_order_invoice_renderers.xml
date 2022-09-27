@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/OrderEmailTemplates
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Email Creditmemo Items List" design_abstraction="custom">
+    <body>
+        <referenceBlock name="sales.email.order.invoice.renderers.default">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Infosys_OrderEmailTemplates::email/items/invoice/default.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

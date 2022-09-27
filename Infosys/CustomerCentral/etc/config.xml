@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerCentral
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer_central>
+            <cc_order_sync_cron>
+                <retry_count>5</retry_count>
+            </cc_order_sync_cron>
+            <cc_api_timeout>
+                <cc_connection_timeout>5</cc_connection_timeout>
+                <cc_request_timeout>5</cc_request_timeout>
+            </cc_api_timeout>
+            <parts_online_purchase>
+                <active>1</active>
+            </parts_online_purchase>
+        </customer_central>
+    </default>
+</config>

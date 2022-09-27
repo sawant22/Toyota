@@ -1,0 +1,7 @@
+type Mutation {
+    unSubscribeEmailToNewsletter(email: String!): status @doc(description:"Unsubscribes the specified email to a newsletter") @resolver(class: "Infosys\\UnsubscribeEmailToNewsletter\\Model\\Resolver\\UnSubscribeEmailToNewsletter")
+}
+
+type status {
+    status: String
+}

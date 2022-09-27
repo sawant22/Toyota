@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="price_calculation">
+        <job instance="Infosys\PriceAdjustment\Cron\UpdateSpecialPrice" method="execute" name="infosys_updatespecialprice_cron">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+    <group id="media_set_sync">
+        <job instance="Infosys\PriceAdjustment\Cron\UpdateMediaSetSelector" method="execute" name="infosys_updatemediasetselector_cron">
+            <schedule>0 */8 * * *</schedule>
+        </job>
+    </group>
+</config>

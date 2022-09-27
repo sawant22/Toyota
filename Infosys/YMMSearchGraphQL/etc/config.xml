@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/YMMSearchGraphQL
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+        <default>
+            <searchbyYMM>
+                <general>
+                    <image_brand>TOY</image_brand>
+                </general>
+                <efc_api_timeout>
+                    <efc_connection_timeout>5</efc_connection_timeout>
+                    <efc_request_timeout>5</efc_request_timeout>
+                </efc_api_timeout>
+            </searchbyYMM>
+        </default>
+</config>

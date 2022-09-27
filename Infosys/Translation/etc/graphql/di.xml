@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/Translation
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\GraphQl\Controller\GraphQl">
+        <plugin name="graphql_load_translate" type="Infosys\Translation\Plugin\Controller\GraphQlPlugin" sortOrder="1" disabled="false"/>
+    </type>
+</config>

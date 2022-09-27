@@ -1,0 +1,46 @@
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mediaset_percentage_listing_data_source" xsi:type="string">Infosys\PriceAdjustment\Model\ResourceModel\Media\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Infosys\PriceAdjustment\Model\ResourceModel\Media\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">media_set</argument>
+            <argument name="resourceModel" xsi:type="string">Infosys\PriceAdjustment\Model\ResourceModel\Media</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mediaset_tier_listing_data_source" xsi:type="string">Infosys\PriceAdjustment\Model\ResourceModel\Tier\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Infosys\PriceAdjustment\Model\ResourceModel\Tier\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tier_price</argument>
+            <argument name="resourceModel" xsi:type="string">Infosys\PriceAdjustment\Model\ResourceModel\Tier</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Infosys\PriceAdjustment\Logger\PriceCalculationLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">PriceCalculationLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\PriceAdjustment\Logger\PriceCalculationHandler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

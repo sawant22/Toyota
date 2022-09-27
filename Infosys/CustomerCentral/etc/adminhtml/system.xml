@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerCentral
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customer_central" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30" translate="label">
+            <label>Customer Central</label>
+            <tab>toyota</tab>
+            <resource>Infosys_CustomerCentral::api_details</resource>
+            <group id="token_api" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Token API Details</label>
+                <field id="token_url" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Token Url</label>
+                </field>
+                <field id="client_id" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Client Id</label>
+                </field>
+                <field id="grant_type" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Grant Type</label>
+                </field>
+                <field id="client_secret" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="obscure">
+                    <label>Client Secret</label>
+	            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+            </group>
+            <group id="save_customer_api" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Save Customer API Details</label>
+                <field id="save_customer_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Save Customer API Url</label>
+                </field>
+                <field id="x_ibm_client_id" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>IBM Client Id</label>
+                </field>
+                 <field id="resource" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Resource</label>
+                </field>
+                <field id="action" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Action</label>
+                </field>
+                <field id="source_system" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Source System</label>
+                </field>
+                <field id="source_record_tpe" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Source Record Type</label>
+                </field>
+                <field id="service_record_type" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Service Record Type</label>
+                </field>
+            </group>
+            <group id="parts_online_purchase" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Parts Online Purchase API Details</label>
+                 <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Send Order Increment ID</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Set to Yes to send the Increment Order ID (starting with PCO).  Set to No to send the Order Entity Id</comment>
+                </field>
+                <field id="parts_online_purchase_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Save Customer API Url</label>
+                </field>
+                <field id="x_ibm_client_id" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>IBM Client Id</label>
+                </field>
+                 <field id="resource" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Resource</label>
+                </field>
+                <field id="action" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Action</label>
+                </field>
+                <field id="source_system" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Source System</label>
+                </field>
+                <field id="source_record_tpe" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Source Record Type</label>
+                </field>
+                <field id="service_record_type" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Service Record Type</label>
+                </field>
+            </group>
+            <group id="cc_order_sync_cron" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Order Sync Cron Settings</label>
+                <field id="retry_count" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Max Retry Count</label>
+                </field>
+            </group>
+            <group id="logging_errors" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="cc_api_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Customer Central Timeout</label>
+                <field id="cc_connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text" canRestore="1">
+                    <label>Curl Connection Timeout</label>
+                    <comment>Set time in seconds.  Timeout for connecting to Customer Central</comment>
+                </field>
+                <field id="cc_request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text" canRestore="1">
+                    <label>Curl Response Timeout</label>
+                    <comment>Set time in seconds. Timeout for Response from Customer Central</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,18 @@
+<!--
+/**
+ * @package     Infosys/ProductSaleable
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+        <default>
+            <threshold_price_config>
+                <threshold_price_group>
+                    <threshold_price>0.01</threshold_price>
+                </threshold_price_group>
+            </threshold_price_config>
+        </default>
+</config>

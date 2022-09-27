@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @package     Infosys/CoreChargeAttribute
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+/** @var \Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn $block */
+$data = $block->getItem();
+$core_charge = $data->getQtyOrdered() * $data->getCoreCharge();
+?>
+
+<?= /* @noEscape */ $block->displayPrices($core_charge, $core_charge) ?>

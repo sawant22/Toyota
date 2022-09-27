@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Infosys_DirectFulFillment::directfulfillment" title="Direct Fulfillment" sortOrder="10">
+                    <resource id="Infosys_DirectFulFillment::index" title="View" sortOrder="50" />
+                    <resource id="Infosys_DirectFulFillment::create" title="Create" sortOrder="150"/>
+                    <resource id="Infosys_DirectFulFillment::configuration" title="Configuration" sortOrder="150"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

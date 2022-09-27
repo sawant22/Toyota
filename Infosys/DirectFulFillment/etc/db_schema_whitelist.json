@@ -1,0 +1,40 @@
+{
+    "sales_order": {
+        "column": {
+            "direct_fulfillment_status": true,
+            "order_reference": true,
+            "service_fee": true,
+            "direct_fulfillment_split": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "direct_fulfillment_status": true,
+            "service_fee": true
+        }
+    },
+    "sales_order_item": {
+        "column": {
+            "direct_fulfillment_eligibility": true,
+            "direct_fulfillment_status": true,
+            "dealer_direct_fulfillment_status": true
+        }
+    },
+    "sales_shipment_item": {
+        "column": {
+            "shipped_part_number": true
+        }
+    },
+    "df_sales_order_freight_recovery": {
+        "column": {
+            "entity_id": true,
+            "order_id": true,
+            "freight_recovery": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DF_SALES_ORDER_FREIGHT_RECOVERY_ORDER_ID_SALES_ORDER_ENTITY_ID": true
+        }
+    }
+}

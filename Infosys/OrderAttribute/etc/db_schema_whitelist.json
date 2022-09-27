@@ -1,0 +1,18 @@
+{
+    "quote_item": {
+        "column": {
+            "vin_number": true,
+            "vehicle_name": true,
+            "fitment_notice": true,
+            "fitment_status": true
+        }
+    },
+    "sales_order_item": {
+        "column": {
+            "vin_number": true,
+            "vehicle_name": true,
+            "fitment_notice": true,
+            "fitment_status": true
+        }
+    }
+}

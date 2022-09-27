@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerCentral
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order" resource="sales" engine="innodb" comment="Sales Flat Order">
+        <column xsi:type="varchar" name="customer_central_id" nullable="true" comment="Customer Central Id" />
+    </table>
+    <table name="sales_order_grid" resource="sales" engine="innodb" comment="Sales Flat Order Grid">
+        <column xsi:type="varchar" name="customer_central_id" nullable="true" comment="Customer Central Id" />
+    </table>
+     <table name="sales_order_address" resource="sales" engine="innodb" comment="Sales Flat Order Address">
+        <column xsi:type="varchar" name="customer_central_address_id" nullable="true" comment="Customer Central Address Id" />
+    </table>
+    <table name="customer_central_order_queue" resource="default" engine="innodb" comment="Customer Central Order Queue">
+        <column xsi:type="int" name="queue_id" unsigned="true" nullable="false" identity="true"
+                comment="Queue ID"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false"
+                identity="false" comment="Order Id"/>
+        <column xsi:type="int" name="retry_count" unsigned="true" nullable="false" comment="Retry Count"/>
+        <column xsi:type="varchar" name="api_status" nullable="true" length="64" comment="API Status"/>       
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <column xsi:type="text" name="messages" nullable="true" comment="Customer central sync actual messages"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="queue_id"/>
+        </constraint>
+    </table>
+</schema>

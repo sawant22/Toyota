@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/ShippingRestriction
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Checkout\Model\ShippingInformationManagement">
+		<plugin name="is_restriction_in_quote" type="Infosys\ShippingRestriction\Plugin\Model\ShippingInformationManagement" sortOrder="1"/>
+	</type>
+	<type name="Magento\Quote\Model\ShippingAddressManagement">
+		<plugin disabled="false" name="is_restriction_in_quote_address" sortOrder="10" type="Infosys\ShippingRestriction\Plugin\Model\ShippingAddressManagement"/>
+	</type>
+	<type name="Magento\Quote\Model\PaymentMethodManagement">
+		<plugin disabled="false" name="is_restriction_in_quote_payment_address" sortOrder="10" type="Infosys\ShippingRestriction\Plugin\Model\PaymentMethodManagement"/>
+	</type>
+	<type name="Magento\Directory\Model\ResourceModel\Region\Collection">
+		<plugin name="Infosys_ShippingRestriction_Limit_State_Filter_Plugin" type="Infosys\ShippingRestriction\Plugin\StateFilter\StateFilter"/>
+	</type>
+</config>

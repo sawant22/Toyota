@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerSSO
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Pitbulk\SAML2\Controller\Saml2\Login" type="Infosys\CustomerSSO\Controller\Saml2\Login" />
+    <preference for="Pitbulk\SAML2\Controller\Saml2\Logout" type="Infosys\CustomerSSO\Controller\Saml2\Logout" />
+    <preference for="Pitbulk\SAML2\Controller\Saml2\SLS" type="Infosys\CustomerSSO\Controller\Saml2\SLS" />
+    <preference for="Pitbulk\SAML2\Controller\Saml2\ACS" type="Infosys\CustomerSSO\Controller\Saml2\ACS" />
+    <preference for="Infosys\CustomerSSO\Api\DCSInterface" type="Infosys\CustomerSSO\Model\DCS" />
+    <preference for="Magento\CustomerGraphQl\Model\Customer\UpdateCustomerAccount" type="Infosys\CustomerSSO\Model\Customer\UpdateCustomerAccount" />
+    <preference for="Magento\Framework\HTTP\Client\Curl" type="Infosys\CustomerSSO\Model\Curl" />
+    <preference for="Magento\CustomerGraphQl\Model\Resolver\UpdateCustomer" type="Infosys\CustomerSSO\Model\Resolver\UpdateCustomer" />
+    
+    <type name="Infosys\CustomerSSO\Logger\DCSLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">customerDCSLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\CustomerSSO\Logger\DCSHandler</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

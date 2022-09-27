@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/VehicleSearch
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2022. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <epc_config>
+            <vehicle_aggregations>
+                <model_year_code_override>1</model_year_code_override>
+            </vehicle_aggregations>
+        </epc_config>
+    </default>
+</config>

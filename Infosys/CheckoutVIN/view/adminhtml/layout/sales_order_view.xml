@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CheckoutVIN
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+       <!--add custom block -->
+       <referenceContainer name="order_additional_info">
+           <block class="Infosys\CheckoutVIN\Block\Adminhtml\Order\View\View" name="sales_custom_view" before = "-" template="order/view/view.phtml" />
+       </referenceContainer>
+   </body>
+</page>

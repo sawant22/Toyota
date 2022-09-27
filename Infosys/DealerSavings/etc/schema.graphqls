@@ -1,0 +1,22 @@
+type Cart  {
+    dealer_savings : DealerSavings
+	@doc(description: "Dealer Savings")
+	@resolver(class: "\\Infosys\\DealerSavings\\Model\\Resolver\\CartDealerSavings")
+}
+
+type CustomerOrder  {
+    dealer_savings : DealerSavings
+	@doc(description: "Dealer Savings")
+	@resolver(class: "\\Infosys\\DealerSavings\\Model\\Resolver\\OrderDealerSavings")
+}
+
+type OrderSuccessDetail {
+	dealer_savings : DealerSavings
+	@doc(description: "Dealer Savings")
+	@resolver(class: "\\Infosys\\DealerSavings\\Model\\Resolver\\OrderDealerSavings")
+}
+
+type DealerSavings {
+	subtotal_excluding_dealer_discount: Float
+	dealer_discount: Float
+}

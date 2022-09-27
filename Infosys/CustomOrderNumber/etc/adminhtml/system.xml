@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CustomOrderNumber
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customordernumber" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>
+                <![CDATA[Custom Order Number]]>
+            </label>
+            <tab>toyota</tab>
+            <resource>Infosys_CustomOrderNumber::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>
+                    <![CDATA[General Settings]]>
+                </label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>
+                        <![CDATA[Enable Extension]]>
+                    </label>
+                    <comment>
+                        <![CDATA[Enable or disable the ability to customize order numbers, invoice numbers, shipment numbers, etc.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

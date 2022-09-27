@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Infosys/SalesReport
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Infosys\SalesReport\Api\DealerSalesStatisticsRepositoryInterface" type="Infosys\SalesReport\Model\DealerSalesStatisticsRepository" />
+    <preference for="Infosys\SalesReport\Api\Data\DealerSalesStatisticsInterface" type="Infosys\SalesReport\Model\DealerSalesStatistics" /> 
+    <preference for="Infosys\SalesReport\Api\DealerSalesStatisticsQueueRepositoryInterface" type="Infosys\SalesReport\Model\DealerSalesStatisticsQueueRepository" />
+    <preference for="Infosys\SalesReport\Api\Data\DealerSalesStatisticsQueueInterface" type="Infosys\SalesReport\Model\DealerSalesStatisticsQueue" />
+    <preference for="Infosys\SalesReport\Api\SalesStatisticsInterface" type="Infosys\SalesReport\Model\SalesStatistics" />
+    <type name="Magento\Sales\Model\ResourceModel\Order">
+        <plugin name="after_place_order_save" type="Infosys\SalesReport\Plugin\AfterOrderSave"/>
+    </type>  
+    <type name="Infosys\SalesReport\Logger\SalesReportLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">SalesReportLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\SalesReport\Logger\SalesReportHandler</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Custom CLI to recalculate the sales statistics - START -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="infosyssales_statistics" xsi:type="object">Infosys\SalesReport\Console\Command\RecalculateSalesStatistics</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Custom CLI to recalculate the sales statistics - STOP -->
+</config>

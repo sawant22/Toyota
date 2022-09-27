@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
+    <router id="admin">
+        <route id="vehicle" frontName="vehicle">
+            <module name="Infosys_Vehicle"/>
+        </route>
+        <route id="schedule_vehicle" frontName="schedule_vehicle">
+            <module name="Infosys_Vehicle"/>
+        </route>
+        <route id="schedule_product" frontName="schedule_product">
+            <module name="Infosys_Vehicle"/>
+        </route>
+    </router>
+</config>

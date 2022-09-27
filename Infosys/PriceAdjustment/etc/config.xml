@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <discount>
+            <discount_configuration>
+                <maximum_product_count>10000</maximum_product_count>
+                <enable_logging>0</enable_logging>
+                <enable_cronjob>1</enable_cronjob>
+                <price_calc_cronjob>1</price_calc_cronjob>
+                <tier_price_import>1</tier_price_import>
+                <tier_price_import_rabbitmq>0</tier_price_import_rabbitmq>                         
+            </discount_configuration>
+        </discount>
+    </default>
+</config>

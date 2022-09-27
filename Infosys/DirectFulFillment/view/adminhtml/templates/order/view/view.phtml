@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+?>
+<?php
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+<section class="admin__page-section order-view-vin-information">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Fee Details')) ?></span>
+    </div>
+    <div class="admin__page-section-item-content">
+        <table class="admin__table-secondary">
+            <tbody>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Order Reference Number')) ?></th>
+                    <th><?= $block->escapeHtml(__('Service Fee')) ?></th>
+                    <th><?= $block->escapeHtml(__('Freight Recovery')) ?></th>
+                    <th><?= $block->escapeHtml(__('Shipment Action')) ?></th>
+                    <th><?= $block->escapeHtml(__('Date')) ?></th>
+                </tr>
+                <?php $freightCollection = $block->getFreightRecovery(); ?>
+                <?php if ($freightCollection->getSize() > 0) : ?>
+                    <?php foreach ($freightCollection as $data) : ?>
+                        <?php if ($data->getAction() == 'direct_fulfillment') : ?>
+                            <tr text-align="justify" !important>
+                                <td><?= $block->getOrder()->getOrderReference() ?></td>
+                                <td><?= $priceHelper->currency($block->getServiceFee()) ?></td>
+                                <td><?= $priceHelper->currency($data->getFreightRecovery()) ?></td>
+                                <td><?= $block->escapeHtml(__('Direct Fulfillment')) ?></td>
+                                <td><?= $block->getCreatedAtFormatted($data->getCreatedAt()) ?></td>
+                            </tr>
+                        <?php elseif ($data->getAction() == 'manual') : ?>
+                            <tr text-align="justify" !important>
+                                <td><?= $block->escapeHtml(__('NA')) ?></td>
+                                <td><?= $block->escapeHtml(__('NA')) ?></td>
+                                <td><?= $priceHelper->currency($data->getFreightRecovery()) ?></td>
+                                <td><?= $block->escapeHtml(__('Manual Shipment')) ?></td>
+                                <td><?= $block->getCreatedAtFormatted($data->getCreatedAt()) ?></td>
+                            </tr>
+                        <?php else : ?>
+                            <tr text-align="justify" !important>
+                                <td><?= $block->escapeHtml(__('NA')) ?></td>
+                                <td><?= $block->escapeHtml(__('NA')) ?></td>
+                                <td><?= $priceHelper->currency($data->getFreightRecovery()) ?></td>
+                                <td><?= $block->escapeHtml(__('Shipstation')) ?></td>
+                                <td><?= $block->getCreatedAtFormatted($data->getCreatedAt()) ?></td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</section>

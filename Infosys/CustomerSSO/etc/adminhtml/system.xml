@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package   Infosys/CustomerSSO
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="pitbulk_saml2_customer" sortOrder="302" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+            <group id="status" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="metadataentityid" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Metadata Entity Id</label>
+                </field>
+            </group>
+        </section>
+        <section id="dcs" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30" translate="label">
+            <label>DCS</label>
+            <tab>toyota</tab>
+            <resource>Infosys_CustomerSSO::api_details</resource>
+            <group id="token_api" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Token API Details</label>
+                <field id="token_url" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Token Url</label>
+                </field>
+                <field id="client_id" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Client Id</label>
+                </field>
+                <field id="grant_type" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Grant Type</label>
+                </field>
+                <field id="client_secret" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Client Secret</label>
+                </field>
+                <field id="scope" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Scope</label>
+                </field>
+            </group>
+            <group id="sso_redirect" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>SSO Logout Configuration</label>
+                <field id="sso_redirect_url" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Logout Url</label>
+                </field>
+            </group>
+            <group id="update_customer" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Update Customer API Details</label>
+                <field id="update_customer_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Update Customer API Url</label>
+                </field>
+                <field id="x_client" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-Client</label>
+                </field>
+                <field id="x_brand" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-BRAND</label>
+                </field>
+                <field id="x_version" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-VERSION</label>
+                </field>
+            </group>
+            <group id="activate_customer" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Activate Customer API Details</label>
+                <field id="activate_customer_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Update Customer API Url</label>
+                </field>
+                <field id="x_client_active" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-Client</label>
+                </field>
+                <field id="x_brand_active" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-BRAND</label>
+                </field>
+                <field id="x_version_active" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-VERSION</label>
+                </field>
+            </group>
+            <group id="get_customer" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Get Customer API Details</label>
+                <field id="get_customer_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Update Customer API Url</label>
+                </field>
+                <field id="x_client_get" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-Client</label>
+                </field>
+                <field id="x_brand_get" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-BRAND</label>
+                </field>
+                <field id="x_version_get" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-VERSION</label>
+                </field>
+            </group>
+            <group id="verify_phone" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Verify OTP  API Details</label>
+                <field id="phone_otp_api_url" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Verify Phone OTP Url	</label>
+                </field>
+                <field id="client_get_v" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-Client</label>
+                </field>
+                <field id="brand_get_v" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-BRAND</label>
+                </field>
+                <field id="version_get_v" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>X-VERSION</label>
+                </field>
+            </group>
+            <group id="logging_errors" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="dcs_api_timeout" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Connection Timeout</label>
+                <field id="dcs_connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Connection Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds.</comment>
+                </field>
+                <field id="dcs_request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Request Timeout</label>
+                    <comment>Set time in seconds.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

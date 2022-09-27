@@ -1,0 +1,14 @@
+type AvailableShippingMethod {
+	pickup_address: PickupLocation
+}
+type PickupLocation {
+    store_name: String
+    street_address_line1: String
+    street_address_line2: String
+	region_name: String
+	region_code: String
+	city: String
+	country: String
+	postcode: String
+	available_time_details: String
+}

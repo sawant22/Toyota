@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<!--
+ * @package     Infosys/DisableCommerceFrontend 
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">	
+    <type name = "Magento\Customer\Controller\Account\Confirm">
+        <plugin name = "account_confirm_controller" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Confirm"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\Confirmation">
+        <plugin name = "account_confirm_controller" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Confirmation"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\Login">
+        <plugin name = "account_login" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Login"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\LoginPost">
+        <plugin name = "account_loginpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\LoginPost"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\Create">
+        <plugin name = "account_create" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Create"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\CreatePost">
+        <plugin name = "account_createpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\CreatePost"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\Edit">
+        <plugin name = "account_edit" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Edit"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\EditPost">
+        <plugin name = "account_editpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\EditPost"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\ForgotPassword">
+        <plugin name = "account_forgotpassword" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\ForgotPassword"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\CreatePassword">
+        <plugin name = "account_forgotpassword" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\CreatePassword"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\ForgotPasswordPost">
+        <plugin name = "account_forgotpasswordpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\ForgotPasswordPost"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\ResetPasswordPost">
+        <plugin name = "account_resetpasswordpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\ResetPasswordPost"
+               sortOrder="1" />
+    </type>
+    <type name = "Magento\Customer\Controller\Account\Index">
+        <plugin name = "account_resetpasswordpost" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Customer\Controller\Account\Index"
+               sortOrder="1" />
+    </type>
+
+    <!-- Checkout controller plugin -->
+    <type name = "\Magento\Checkout\Controller\Account\Create">
+        <plugin name = "checkoutcreate_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Checkout\Controller\Account\Create"
+               sortOrder="1" />
+    </type>
+    <type name = "\Magento\Checkout\Controller\Account\DelegateCreate">
+        <plugin name = "checkoutcreate_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Checkout\Controller\Account\DelegateCreate"
+               sortOrder="1" />
+    </type>
+    <type name = "\Magento\Checkout\Controller\Index\Index">
+        <plugin name = "checkoutindex_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Checkout\Controller\Index\Index"
+               sortOrder="1" />
+    </type>
+    <type name = "\Magento\Checkout\Controller\OnePage\SaveOrder">
+        <plugin name = "saveorder_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Checkout\Controller\OnePage\SaveOrder"
+               sortOrder="1" />
+    </type>
+    <type name = "\Magento\Checkout\Controller\Cart\Index">
+        <plugin name = "disablecart_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Checkout\Controller\Cart\Index"
+               sortOrder="1" />
+    </type>
+
+    <!-- Homepage controller plugin -->
+    <type name = "\Magento\Cms\Controller\Index\Index">
+        <plugin name = "hompage_plugin" 
+               type="Infosys\DisableCommerceFrontend\Plugin\Cms\Controller\Index\Index"
+               sortOrder="1" />
+    </type>
+</config>

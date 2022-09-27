@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/YMMSearchGraphQL
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="searchbyYMM" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>EFC Configuration</label>
+            <tab>toyota</tab>
+            <resource>Infosys_YMMSearchGraphQL::searchbyymm_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>EFC Configuration</label>
+                <field id="apikey" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API key</label>
+                </field>
+                <field id="apiurl" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API url</label>
+                </field>
+                <field id="imageurl" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Vehicle Image url</label>
+                </field>
+                <field id="image_brand" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Vehicle Image Brand</label>
+                    <source_model>Infosys\YMMSearchGraphQL\Model\Config\Brand\BrandDataProvider</source_model>
+                </field>
+            </group>
+
+            <group id="logging_errors" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="logs_active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="efc_api_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Connection Timeout</label>
+                <field id="efc_connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>EFC Connection Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds</comment>
+                </field>
+                <field id="efc_request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>EFC Request Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

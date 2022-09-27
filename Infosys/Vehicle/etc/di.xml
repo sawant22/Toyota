@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Infosys\Vehicle\Api\VehicleRepositoryInterface" type="Infosys\Vehicle\Model\VehicleRepository" />
+    <preference for="Infosys\Vehicle\Api\Data\VehicleInterface" type="Infosys\Vehicle\Model\Vehicle" />
+    <preference for="Infosys\Vehicle\Api\VehicleProductMappingRepositoryInterface" type="Infosys\Vehicle\Model\VehicleProductMappingRepository" />
+    <preference for="Infosys\Vehicle\Api\Data\VehicleProductMappingInterface" type="Infosys\Vehicle\Model\VehicleProductMapping" />
+    <preference for="Infosys\Vehicle\Api\Data\VehicleSearchResultsInterface" type="Infosys\Vehicle\Model\VehicleSearchResults" />
+    <virtualType name="Infosys\Vehicle\Model\ResourceModel\Vehicle\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_vehicle_entity</argument>
+            <argument name="resourceModel" xsi:type="string">Infosys\Vehicle\Model\ResourceModel\Vehicle</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="vehicle_list_data_source" xsi:type="string">Infosys\Vehicle\Model\ResourceModel\Vehicle\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="vehicle" xsi:type="string">Infosys_Vehicle</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Infosys\Vehicle\Logger\VehicleLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">VehicleLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\Vehicle\Logger\VehicleHandler</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\ScheduledImportExport\Model\Import" type="Infosys\Vehicle\Model\ScheduledImport" />
+    <type name="Magento\Framework\Console\CommandList">
+       <arguments>
+           <argument name="commands" xsi:type="array">
+               <item name="validateImportedProducts" xsi:type="object">Infosys\Vehicle\Console\Command\ValidateProduct</item>
+           </argument>
+       </arguments>
+    </type>
+</config>

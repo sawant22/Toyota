@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/EPCconnect
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="epcconnect" translate="label" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>EPC Configuration</label>
+            <tab>toyota</tab>
+            <resource>Infosys_EPCconnect::epc_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>SFTP credentials</label>
+                <field id="hostname" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Host</label>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>SFTP user</label>
+                </field>
+                <field id="key_path" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>SFTP ssh</label>
+                </field>
+                <field id="connection_check" translate="label" type="button" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Infosys\EPCconnect\Block\System\Config\Connection</frontend_model>
+                </field>
+            </group>
+            <group id="enable_product_import_methods" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Enable URL Rewrites During Import</label>
+                <field id="enable_canonical_urlrewrite_generate" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Canonical URL Rewrite Generate</label>
+                    <comment>
+                        <![CDATA[Enable or disable the canonical URL rewrite generation during product import.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                </group>
+        </section>
+    </system>
+</config>

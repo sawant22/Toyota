@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/DealerShippingCost
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="shipstation_general" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30" translate="label">
+            <tab>shipstation</tab>
+            <resource>Infosys_DealerShippingCost::dealershippingcost_config</resource>
+            <group id="integration_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Integration Settings</label>
+                <field id="api_key" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Key</label>
+                </field>
+                <field id="api_secret" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="obscure">
+                    <label>API Secret</label>
+	                <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="api_url" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Url</label>
+                </field>
+            </group>
+            <group id="logging_errors" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="shipstation_api_timeout" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>API Connection Timeout</label>
+                 <field id="connection_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Connection Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds.</comment>
+                </field>
+                <field id="request_timeout" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" type="text">
+                    <label>Curl Request Timeout</label>
+                    <comment>Set time in seconds. Default is 5 seconds.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

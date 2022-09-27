@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceContainer name="page.top" remove="true"/>
+        <referenceContainer name="footer-container" remove="true"/>
+        <referenceContainer name="before.body.end" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="sso_saml2_acs" template="Pitbulk_SAML2::acs.phtml"/>
+            <block cacheable="false" class="Magento\Framework\View\Element\Template" name="sso_saml2_login_postback" template="Infosys_CustomerSSO::login_postback.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

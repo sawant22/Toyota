@@ -1,0 +1,35 @@
+type Query {
+    changeCustomerEmail(
+        email: String @doc(description: "User Email")
+        password: String @doc(description: "User password")
+    ): Output
+        @resolver(class: "Infosys\\CustomerSSO\\Model\\Resolver\\UpdateCustomerResolver")
+    updateCustomerPhoneNumber(
+        phoneNumber: String @doc(description: "User phoneNumber")
+        password: String @doc(description: "User password")
+    ): Output
+        @resolver(class: "Infosys\\CustomerSSO\\Model\\Resolver\\UpdateCustomerPhoneNoResolver")
+}
+
+input CustomerUpdateInput {
+    customer_password: String @doc(description: "User password")
+}
+
+type Output @doc(description: "update customer email response") {
+    message: String @doc(description: "Response Message")
+}
+
+type Mutation {
+    activateCustomer(
+        activationCode: String @doc(description: "Activation code")
+    ): OutputData
+        @resolver(class: "Infosys\\CustomerSSO\\Model\\Resolver\\ActivateCustomerResolver")
+    validateCustomerPhone(
+        otpCode: String @doc(description: "phoneNumber otpCode")
+    ): Output
+        @resolver(class: "Infosys\\CustomerSSO\\Model\\Resolver\\VerifyPhoneResolver")
+}
+
+type OutputData @doc(description: "activate customer response") {
+    message: String @doc(description: "Response Message")
+}

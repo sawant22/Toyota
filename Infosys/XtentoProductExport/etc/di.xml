@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/XtentoProductExport
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- overrding the file to filter the product in google feed  -->
+    <preference for="Xtento\ProductExport\Model\Export\Entity\Product" type="Infosys\XtentoProductExport\Model\Export\Entity\Product" />
+</config>

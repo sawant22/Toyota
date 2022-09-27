@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/Search
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Adding Search Terms also in the response -->
+    <preference for="Mirasvit\SearchGraphQl\Model\Resolver\SearchResult" type="Infosys\Search\Model\Resolver\SearchResult" />
+    <!-- Fix for PageSize limit  -->
+    <preference for="Mirasvit\SearchGraphQl\Model\Resolver\Magento\Catalog\Product" type="Infosys\Search\Model\Resolver\Magento\Product" />
+    <!-- Fix for Mirasvit Graphql Search issue -->
+    <type name="Magento\Elasticsearch\SearchAdapter\Query\Builder\Sort">
+        <arguments>
+            <argument name="skippedFields" xsi:type="array">
+                <item name="null" xsi:type="string"></item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\Search">
+        <arguments>
+            <argument name="context" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\Context</argument>
+        </arguments>
+    </type>
+</config>

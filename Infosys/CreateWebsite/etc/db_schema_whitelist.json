@@ -1,0 +1,15 @@
+{
+    "store_website": {
+        "column": {
+            "dealer_code": true,
+            "region_code": true
+        }
+    },
+    "toyota_dealer_regions": {
+        "column": {
+          "id": true,
+          "region_code": true,
+          "region_label": true
+        }
+      }
+}

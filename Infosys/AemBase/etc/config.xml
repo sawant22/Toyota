@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package     Infosys/AemBase
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<aem_general_config>
+			<general>
+				<aem_domain></aem_domain>
+                <aem_author_domain></aem_author_domain>
+				<magento_path>commerce/</magento_path>
+				<aem_path>content/we-retail/us/</aem_path>
+				<aem_product_path>products/product-page.</aem_product_path>
+				<aem_category_path>products/category-page/</aem_category_path>
+                <aem_sitemap_path>sitemap.xml</aem_sitemap_path>
+				<aem_homepage_path>en.html</aem_homepage_path>
+			</general>
+			<dev>
+				<enable_debug_logging>0</enable_debug_logging>
+			</dev>
+		</aem_general_config>
+	</default>
+</config>

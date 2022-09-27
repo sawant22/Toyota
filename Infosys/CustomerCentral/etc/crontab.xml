@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package   Infosys/CustomerCentral
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="order_processing">
+        <job instance="Infosys\CustomerCentral\Cron\CustomerCentralOrderQueue" method="execute" name="customer_central_order_create_cron">
+            <schedule>*/5  * * * *</schedule>
+        </job>
+        <job instance="Infosys\CustomerCentral\Cron\CustomerCentralRetryOrderQueue" method="execute" name="customer_central_retry_order_create_cron">
+            <schedule>*/15  * * * *</schedule>
+        </job>
+    </group>
+</config>

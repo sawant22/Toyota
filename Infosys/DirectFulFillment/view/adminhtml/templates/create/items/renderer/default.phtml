@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+//phpcs:disable Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
+//phpcs:disable Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
+?>
+<?php $_item = $block->getItem();
+$_orderItem = $_item->getOrderItem();
+?>
+<tr>
+    <td class="col-product"><?= $block->getColumnHtml($_item, 'name') ?></td>
+    <td class="col-ordered-qty"><?= $block->getColumnHtml($_item, 'qty') ?></td>
+    <td class="col-qty last">
+        <select name="direct_fulfillment_status[items][<?= (int) $_item->getOrderItemId() ?>]" id="direct_fulfillment_status[items][<?= (int) $_item->getOrderItemId() ?>]" class="direct_fulfillment_status">
+            <option value="1" <?= ($_orderItem->getDealerDirectFulfillmentStatus()) ? "selected" : "" ?>><?= $block->escapeHtml(__('Yes')) ?></option>
+            <option value="0" <?= ($_orderItem->getDealerDirectFulfillmentStatus()) ? "" : "selected" ?>><?= $block->escapeHtml(__('No')) ?></option>
+        </select>
+    </td>
+</tr>

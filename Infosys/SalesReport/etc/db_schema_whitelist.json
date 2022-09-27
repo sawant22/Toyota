@@ -1,0 +1,45 @@
+{
+    "toyota_dealer_sales_statistics": {
+        "column": {
+            "entity_id": true,
+            "report_date": true,
+            "store_id": true,
+            "orders_qty": true,
+            "product_sales": true,
+            "percent_parts": true,
+            "percent_accessories": true,
+            "shipping_sales": true,
+            "total_net_sales": true,
+            "total_gross_sales": true,
+            "product_gross_profit": true,
+            "shipping_gross_profit": true,
+            "total_gross_profit": true,
+            "gross_profit_per_order": true,
+            "product_gross_profit_percent": true,
+            "total_gross_profit_percent": true,
+            "total_discount": true,
+            "time_to_receive": true,
+            "time_to_ship": true
+        },
+        "index": {
+            "TOYOTA_DEALER_SALES_STATISTICS_REPORT_DATE": true,
+            "TOYOTA_DEALER_SALES_STATISTICS_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TOYOTA_DEALER_SALES_STATISTICS_STORE_ID_REPORT_DATE": true,
+            "TOYOTA_DEALER_SALES_STATISTICS_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "toyota_dealer_sales_statistics_queue": {
+        "column": {
+            "entity_id": true,
+            "store_id": true,
+            "report_date": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TOYOTA_DEALER_SALES_STATISTICS_QUEUE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

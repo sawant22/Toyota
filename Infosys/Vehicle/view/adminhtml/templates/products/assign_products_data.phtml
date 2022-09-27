@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright � 2021. All Rights Reserved.
+ */
+$vehicleCollection = $block->getvehicleCollection();
+?>
+<?php foreach ($vehicleCollection as $vehicle): ?>
+
+    <div>
+        <table style="width:50%; float: left;">
+            <tr>
+                <th><?= $block->escapeHtml(__('Title')) ?></th>
+                <td>
+                    <?php
+                    if (!empty($vehicle->getTitle())) {
+                        echo $block->escapeHtml($vehicle->getTitle());
+                    } else {
+                        echo $block->escapeHtml(__('N/A'));
+                    }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Brand')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getBrand()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Model Year')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getModelYear()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Model Code')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getModelCode()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Series Name')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getSeriesName()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Transmission')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getTransmission()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Created At')) ?></th>
+                <td>
+                    <?= $block->escapeHtml(date("D M d, Y, h:i:s A", strtotime($vehicle->getCreatedAt()))) ?>
+                </td>
+            </tr>
+        </table>
+        <table style="width:50%; float: right;">
+            <tr>
+                <th><?= $block->escapeHtml(__('Grade')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getGrade()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Driveline')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getDriveline()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Body Style')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getBodyStyle()); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Engine Type')) ?></th>
+                <td><?= $block->escapeHtml($vehicle->getEngineType()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Model Range')) ?></th>
+                <td>
+                    <?php
+                    if (!empty($vehicle->getModelRange())) {
+                        echo $block->escapeHtml($vehicle->getModelRange());
+                    } else {
+                        echo $block->escapeHtml(__('N/A'));
+                    }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Model Description')) ?></th>
+                <td>
+                    <?php
+                    if (!empty($vehicle->getModelDescription())) {
+                        echo $block->escapeHtml($vehicle->getModelDescription());
+                    } else {
+                        echo $block->escapeHtml(__('N/A'));
+                    }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Modified At')) ?></th>
+                <td>
+                    <?= $block->escapeHtml(date("D M d, Y, h:i:s A", strtotime($vehicle->getUpdatedAt()))) ?>
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php endforeach; ?>
+<style>
+    table {
+        width: 100%;
+    }
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+</style>

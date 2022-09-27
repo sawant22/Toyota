@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/AemBase
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Xtento_OrderExport:etc/xtento/orderexport_settings.xsd">
+    <settings>
+        <setting name="custom_allowed_php_functions">Infosys\AemBase\Helper\Xsl::getProductPath</setting>
+    </settings>
+</config>

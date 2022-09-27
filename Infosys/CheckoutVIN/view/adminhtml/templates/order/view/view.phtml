@@ -1,0 +1,31 @@
+<?php
+/**
+ * @package     Infosys/CheckoutVIN
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+?>
+<section class="admin__page-section order-view-vin-information">
+<div class="admin__page-section-title">
+<span class="title"><?= $block->escapeHtml(__('VIN Details')) ?></span>
+</div>
+<div class="admin__page-section-item-content">
+<table class="admin__table-secondary">
+    <tbody>
+        <tr>
+            <th><?= $block->escapeHtml(__('VIN')) ?></th>
+            <th><?= $block->escapeHtml(__('Vehicle Name')) ?></th>
+        </tr>
+        <?php if ($block->getVinData()): ?>
+            <?php foreach ($block->getVinData() as $data): ?>
+            <tr text-align = "justify" !important>
+                <td><?= $block->escapeHtml($data['vin_number']) ?></td>
+                <td><?= $block->escapeHtml($data['vehicle_name'], ['br']) ?></td>
+            </tr>
+            <?php endforeach;?>
+        <?php endif; ?>
+    </tbody>
+</table>
+</div>
+</section>

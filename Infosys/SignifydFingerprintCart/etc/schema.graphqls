@@ -1,0 +1,3 @@
+type Cart {
+	signifyd_fingerprint: String @resolver (class: "\\Infosys\\SignifydFingerprintCart\\Model\\Resolver\\SignifydFingerprint")
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.import.history.container">
+            <referenceBlock name="adminhtml.import.history.grid">
+                <referenceBlock name="import.history.grid.columnSet.username">
+                    <arguments>
+                        <argument name="header" xsi:type="string" translate="true">User</argument>
+                        <argument name="type" xsi:type="string">text</argument>
+                        <argument name="index" xsi:type="string">username</argument>
+                        <argument name="escape" xsi:type="string">1</argument>
+                        <argument name="column_css_class" xsi:type="string">col-name</argument>
+                        <argument name="header_css_class" xsi:type="string">col-name</argument>
+                        <argument name="renderer" xsi:type="string">Infosys\Vehicle\Block\Adminhtml\Import\Column\Renderer\Username</argument>
+                    </arguments>
+                </referenceBlock>
+            </referenceBlock>
+    </referenceBlock>
+</body>
+</page>

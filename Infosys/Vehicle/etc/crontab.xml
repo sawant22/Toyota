@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/Vehicle
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="imports">
+		<job instance="Infosys\Vehicle\Cron\SyncFiles" method="execute" name="sync_vehicle_files">
+			<schedule>0 * * * *</schedule>
+		</job>
+        <job instance="Infosys\Vehicle\Cron\VehicleProductTasks" method="execute" name="vehicle_product_tasks">
+			<schedule>*/5 * * * *</schedule>
+		</job>
+    </group>
+    <group id="vehicle_fitment">
+		<job instance="Infosys\Vehicle\Cron\ProductVehicleFits" method="execute" name="product_vehicle_fits">
+            <schedule>*/5  * * * *</schedule>
+        </job>
+    </group>
+</config>

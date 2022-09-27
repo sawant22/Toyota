@@ -1,0 +1,57 @@
+input ProductAttributeFilterInput @doc(description: "ProductAttributeFilterInput defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
+    model_year: FilterEqualTypeInput
+    model_code: FilterEqualTypeInput
+    series_name: FilterEqualTypeInput
+    brand: FilterEqualTypeInput
+    grade: FilterEqualTypeInput
+    driveline: FilterEqualTypeInput
+    vehicle_id: FilterEqualTypeInput
+    model_year_code: FilterEqualTypeInput
+    body_style: FilterEqualTypeInput
+    engine_type: FilterEqualTypeInput
+    transmission: FilterEqualTypeInput
+}
+type Query {
+    vehicles (
+        filter: VehicleAttributeFilterInput @doc(description: "Identifies which vehicle attributes to search for and return."),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1."),
+    ): Vehicles
+    @resolver(class: "Infosys\\VehicleSearch\\Model\\Resolver\\Vehicles") @doc(description: "The vehicles query searches for vehicles that match the criteria specified in the search and filter attributes.")
+}
+input VehicleAttributeFilterInput @doc(description: "ProductAttributeFilterInput defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
+    model_year: FilterEqualTypeInput
+    model_code: FilterEqualTypeInput
+    series_name: FilterEqualTypeInput
+    brand: FilterEqualTypeInput
+    grade: FilterEqualTypeInput
+    driveline: FilterEqualTypeInput
+    status: FilterEqualTypeInput
+}
+
+type Vehicles @doc(description: "The Products object is the top-level object returned in a vehicle search.") {
+    page_info: SearchResultPageInfo @doc(description: "An object that includes the page_info and currentPage values specified in the query.")
+    total_count: Int @doc(description: "The number of vehicles that are marked as visible. By default, in complex vehicles, parent vehicles are visible, but their child vehicles are not.")
+    aggregations: [Aggregation] @doc(description: "Layered navigation aggregations.")
+    items: [VehicleData]
+}
+interface ProductInterface @typeResolver(class: "Magento\\CatalogGraphQl\\Model\\ProductInterfaceTypeResolverComposite") @doc(description: "The ProductInterface contains attributes that are common to all types of products. Note that descriptions may not be available for custom and EAV attributes.") {
+	vehicles : [VehicleData]
+}
+type VehicleData {
+    entity_id: String
+    title: String
+    brand: String
+    model_year: String
+    model_code: String
+    series_name: String
+    grade: String
+    driveline: String
+    body_style: String
+    engine_type: String
+    model_range: String
+    model_description: String
+    transmission: String
+    vehicle_name: String
+    vehicle_image: String
+}

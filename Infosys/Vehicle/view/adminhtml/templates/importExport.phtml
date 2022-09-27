@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+
+/** @var $block \Infosys\Vehicle\Block\Adminhtml\Replace\ImportExport */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+<div class="import-export-vehicle-replace-data">
+    <?php if (!$block->getIsReadonly()):?>
+    <div class="import-vehicle-replace-data">
+        <?php if ($block->getUseContainer()):?>
+        <form id="import-form"
+              class="admin__fieldset"
+              action="<?= $block->escapeUrl($block->getUrl('vehicle/replace/importPost')) ?>"
+              method="post"
+              enctype="multipart/form-data">
+        <?php endif; ?>
+            <?= $block->getBlockHtml('formkey') ?>
+            <div class="fieldset admin__field">
+                <label for="import_vehicle_replace_data_file" class="admin__field-label">
+                    <span><?= $block->escapeHtml(__('Import Vehicle Replace Data')) ?></span>
+                </label>
+                <div class="admin__field-control">
+                    <input type="file"
+                           id="import_vehicle_replace_data_file"
+                           name="import_vehicle_replace_data_file"
+                           class="input-file required-entry"/>
+                    <?= $block->getButtonHtml(__('Import Vehicle Replace Data'), '', 'import-submit') ?>
+                </div>
+            </div>
+        <?php if ($block->getUseContainer()):?>
+        </form>
+        <?php endif; ?>
+        <?php $scriptString = <<<script
+
+    require(['jquery', 'Magento_Ui/js/modal/alert', "mage/mage", "loadingPopup", 'mage/translate'],
+        function(jQuery, uiAlert){
+
+    jQuery('#import-form').mage('form').mage('validation');
+    (function ($) {
+        $('.import-submit').click(function(){
+            if($(':input[name="import_vehicle_replace_data_file"]').val()) {
+                $('body').loadingPopup({
+                    timeout: false
+                });
+
+                $(this.form).submit();
+            } else {
+                uiAlert({
+                    content: $.mage.__('Please select a file to import!')
+                });
+            }
+        });
+    })(jQuery);
+
+});
+
+script;
+        ?>
+        <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+    </div>
+    <?php endif; ?>
+    <div class="export-vehicle-replace-data <?= ($block->getIsReadonly()) ? 'box-left' : 'box-right' ?>">
+        <?php if ($block->getUseContainer()):?>
+        <form id="export_form"
+              class="admin__fieldset"
+              action="<?= $block->escapeUrl($block->getUrl('vehicle/replace/exportPost')) ?>"
+              method="post"
+              enctype="multipart/form-data">
+        <?php endif; ?>
+            <?= $block->getBlockHtml('formkey') ?>
+            <div class="fieldset admin__field">
+                <span class="admin__field-label"><span><?= $block->escapeHtml(__('Export Vehicle Replace Data')) ?></span></span>
+                <div class="admin__field-control">
+                    <?= $block->getButtonHtml(__('Export Vehicle Replace Data'), "export_form.submit()") ?>
+                </div>
+            </div>
+        <?php if ($block->getUseContainer()):?>
+        </form>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerSSO
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
+>
+    <router id="standard">
+        <route id="pitbulk_saml2" frontName="sso">
+            <module name="Infosys_CustomerSSO" />
+            <module name="Pitbulk_SAML2" />
+        </route>
+    </router>
+
+</config>

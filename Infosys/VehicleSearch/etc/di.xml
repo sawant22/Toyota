@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/VehicleSearch
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Elasticsearch\Model\Adapter\FieldMapperInterface">
+        <arguments>
+            <argument name="fieldMappers" xsi:type="array">
+                <item name="vehicle_indexer_index" xsi:type="string">Infosys\VehicleSearch\Model\Indexer\FieldMapper</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Infosys\VehicleSearch\Model\Indexer\ConfigProvider">
+        <arguments>
+            <argument name="adapters" xsi:type="array">
+                <item name="elasticsearch7" xsi:type="string">Infosys\VehicleSearch\Model\Indexer\ElasticsearchAdapter</item>
+            </argument>
+        </arguments>
+    </type>
+     <type name="Magento\Elasticsearch\Model\Adapter\Elasticsearch">
+        <plugin name="elasticPushVehicleDataBeforeAddDocs"
+            type="Infosys\VehicleSearch\Plugin\PushVehicleInProductsBeforeAddDocs"/>
+    </type>
+    <type name="Magento\Elasticsearch\Elasticsearch5\Model\Adapter\FieldMapper\ProductFieldMapper">
+        <plugin name="addCustomFieldMapping" type="Infosys\VehicleSearch\Plugin\FieldMapper\ProductFieldMapper" />
+    </type>
+    <type name="Magento\Elasticsearch\SearchAdapter\Dynamic\DataProvider">
+        <arguments>
+            <argument name="indexerId" xsi:type="string">vehicle_indexer_index</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Elasticsearch\SearchAdapter\Aggregation\Builder">
+        <arguments>
+            <argument name="dataProviderContainer" xsi:type="array">
+                <item name="vehicle_indexer_index" xsi:type="object">Magento\Elasticsearch\SearchAdapter\Dynamic\DataProvider</item>
+            </argument>
+            <argument name="aggregationContainer" xsi:type="array">
+                <item name="termBucket" xsi:type="object">Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Term</item>
+                <item name="dynamicBucket" xsi:type="object">Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Dynamic</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Infosys\VehicleSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplierInterface" type="Infosys\VehicleSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplier"/>
+    <preference for="Infosys\VehicleSearch\Model\Resolver\Vehicles\DataProvider\Vehicle\CollectionProcessorInterface" type="Infosys\VehicleSearch\Model\Resolver\Vehicles\DataProvider\Vehicle\CompositeCollectionProcessor"/>
+    <type name="Infosys\VehicleSearch\Model\Resolver\Vehicles\DataProvider\Vehicle\CompositeCollectionProcessor">
+        <arguments>
+            <argument name="collectionProcessors" xsi:type="array">
+                <item name="search" xsi:type="object">Infosys\VehicleSearch\Model\Resolver\Vehicles\DataProvider\Vehicle\CollectionProcessor\SearchCriteriaProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+	<type name="Magento\Elasticsearch\Model\Adapter\BatchDataMapper\DataMapperFactory">
+        <arguments>
+            <argument name="dataMappers" xsi:type="array">
+                <item name="product" xsi:type="string">Magento\Elasticsearch\Model\Adapter\BatchDataMapper\ProductDataMapper</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Aggregations" type="Infosys\VehicleSearch\Model\Resolver\Aggregations" />
+</config>

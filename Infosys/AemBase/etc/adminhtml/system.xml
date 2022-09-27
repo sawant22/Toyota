@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package     Infosys/AemBase 
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="aem" sortOrder="2000" translate="label">
+			<label>Adobe Experience Manager</label>
+		</tab>
+		<section id="aem_general_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>General</label>
+			<tab>aem</tab>
+			<resource>Infosys_AemBase::config_infosys_aembase</resource>
+			<group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>General</label>
+				<field id="aem_domain" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+					<label>AEM Publish Domain</label>
+					<comment>The domain in which the AEM application lives.  must end with /</comment>
+				</field>
+                <field id="aem_author_domain" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="21" translate="label" type="text">
+					<label>AEM Author Domain</label>
+					<comment>The domain in which the AEM Author application lives. must end with /</comment>
+				</field>
+				<field id="magento_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Magento Path</label>
+					<comment>Path added for magento URLs</comment>
+				</field>
+				<field id="aem_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+					<label>AEM Path</label>
+					<comment>Path for AEM pages. Must end with / Eg: https://www.example.com/</comment>
+				</field>
+				<field id="aem_product_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="text">
+					<label>AEM Product Path</label>
+					<comment>Path for Product URLs. Must end with / Eg: products/product/</comment>
+				</field>
+				<field id="aem_category_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="text">
+					<label>AEM Category Path</label>
+					<comment>Path for Category Pages</comment>
+				</field>
+				<field id="aem_homepage_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+					<label>AEM Homepage Path</label>
+					<comment>Path for Homepage on AEM.</comment>
+				</field>
+                <field id="aem_sitemap_path" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+					<label>AEM Sitemap Path</label>
+					<comment>Path for Sitemap URL to include in our sitemap</comment>
+				</field>
+			</group>
+            <group id="author_authentication" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="15" translate="label">
+				<label>Author Authentication</label>
+                <comment>For Backend syncing processes like Category pages</comment>
+                <field id="username" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>UserName</label>
+					<comment>UserName for AEM author Login</comment>
+				</field>
+				<field id="password" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Password</label>
+                    <comment>Password for AEM author Login</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+			</group>
+			<group id="dev" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+				<label>Dev Settings</label>
+				<field id="enable_debug_logging" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Enable Debug Logging</label>
+					<comment/>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

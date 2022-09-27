@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/Vehicle
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dealer_brand" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40" translate="label">
+            <label>Dealer Brand</label>
+            <tab>toyota</tab>
+            <resource>Infosys_Vehicle::brand</resource>
+            <group id="brand_config" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Brand configuration</label>
+                <field id="brand_filter" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Available brands for products filter </label>
+                    <source_model>Infosys\Vehicle\Model\Config\Brand\BrandDataProvider</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="epc_config" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40" translate="label">
+            <label>Vehicle</label>
+            <tab>toyota</tab>
+            <resource>Infosys_Vehicle::vehicle</resource>
+            <group id="epc_config_group" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Vehicle configuration</label>
+                <field id="scheduled_import_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Scheduled Import Failed Email</label>
+                </field>
+            </group>
+            <group id="vehicle_placeholder" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Vehicle Image Placeholder</label>
+                <field id="placeholder" type="image" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">catalog/vehicle/placeholder</upload_dir>
+                    <base_url type="media" scope_info="1">catalog/vehicle/placeholder</base_url>
+                </field>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>SFTP credentials</label>
+                <field id="hostname" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Host</label>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>SFTP user</label>
+                </field>
+                <field id="key_path" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>SFTP ssh</label>
+                </field>
+                <field id="connection_check" translate="label" type="button" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Infosys\Vehicle\Block\System\Config\Connection</frontend_model>
+                </field>
+            </group>
+            <group id="vehicle_aggregations" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Vehicle Aggregations</label>
+                <field id="model_year" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Year</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="series_name" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Model</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="grade" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Trim Level</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="driveline" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Driveline</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="body_style" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Body Style</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="engine_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Engine Type</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="transmission" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Transmission</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="cron_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Cron Settings</label>
+                <field id="enable_sync" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable SFTP Files Sync </label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="enable_tasks" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Scheduled Tasks </label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="file_expiry_limit" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto remove scheduled files(in days)</label>
+                </field>
+            </group>
+            <group id="logging_errors" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Logs</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable/Disable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="product_vehicle_fitment" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Product Vehicle Fitment</label>
+                <field id="maximum_product_count" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Count for Vehicle Fitment Update</label>
+                    <comment>This configuration will be used when we update product vehicle fitment during product import and admin brand change, based on the count we are updating fitment data for the product</comment>
+                </field>
+            </group>
+            <group id="vehicle_data_replace" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Vehicle Data Find/Replace</label>
+                <field id="vehicle_data_find_replace" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable/Disable Replace</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="import_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Import Settings</label>
+                <field id="validation_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Validation Strategy</label>
+                    <source_model>Infosys\Vehicle\Model\Config\Backend\ValidationType</source_model>
+                </field>
+                <field id="errors_count" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Allowed Errors Count</label>
+                    <validate>validate-number</validate>
+                </field>
+                <field id="fitment_import" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable/Disable Vehicle Fitment During Import</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable insert into vehicle fitment during product import</comment>
+                </field>
+                <field id="fitment_calc_cron" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable/Disable Vehicle Fitment Calc update Cron</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable vehicle fitment calculation for product using cronjob</comment>
+                </field>
+                <field id="mapping_import" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable/Disable Vehicle mapping insert</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable vehicle product mapping insert during import</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

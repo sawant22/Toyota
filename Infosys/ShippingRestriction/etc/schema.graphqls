@@ -1,0 +1,16 @@
+#Get Active US States Module
+type Query {
+	getShippingRegions: ShippingStates
+		@resolver(
+			class: "Infosys\\ShippingRestriction\\Model\\Resolver\\ShippingStates"
+		)
+		@doc(description: "Get US active shipping states")
+}
+type ShippingStates {
+	items: [RegionData]
+}
+type RegionData {
+	id: String @doc(description:"Region Id")
+	regioncode: String @doc(description:"Region/State Code")
+	region: String @doc(description:"Region/State Name")
+}

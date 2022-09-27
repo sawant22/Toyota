@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Infosys/Vehicle
+ * @version 1.0.0
+ * @author Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Infosys_Vehicle::menu" title="Vehicles" translate="title" module="Infosys_Vehicle" sortOrder="30" parent="Magento_Catalog::inventory" action="vehicle/" resource="Magento_Catalog::categories"/>
+        <add id="Infosys_Vehicle::vehicle" title="Run Files Sync" translate="title" module="Infosys_Vehicle" sortOrder="30" parent="Magento_Catalog::inventory" action="vehicle/sftp/vehicle" resource="Magento_Catalog::categories"/>
+        <add id="Infosys_Vehicle::product" title="Run Scheduled Tasks" translate="title" module="Infosys_Vehicle" sortOrder="30" parent="Magento_Catalog::inventory" action="vehicle/sftp/product" resource="Magento_Catalog::categories"/>
+        <add id="Infosys_Vehicle::data_replace" title="Import/Export Vehicle Data Replace" sortOrder="30" module="Infosys_Vehicle" parent="Magento_Backend::system_convert" action="vehicle/replace/importExport" resource="Infosys_Vehicle::data_import_export"/>
+    </menu>
+</config>

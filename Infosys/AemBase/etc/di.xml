@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package     Infosys/AemBase
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\Url">
+		<plugin disabled="false" name="Infosys_AemBase_Plugin_Magento_Framework_Url" sortOrder="10" type="Infosys\AemBase\Plugin\Magento\Framework\Url"/>
+	</type>
+    <type name="Magento\Catalog\Model\Product\Url">
+        <plugin disabled="false" name="Infosys_AemBase_Plugin_Magento_Catalog_Model_Product_Url" sortOrder="10" type="Infosys\AemBase\Plugin\Product\Url"/>
+    </type>
+
+    <!-- Sitemap Customizations -->
+    <type name="Magento\Sitemap\Model\ItemProvider\Category">
+		<plugin disabled="false" name="Infosys_AemBase_Plugin_Magento_Sitemap_Model_ItemProvider_Category" sortOrder="10" type="Infosys\AemBase\Plugin\Magento\Sitemap\Model\ItemProvider\Category"/>
+	</type>
+	<type name="Magento\Sitemap\Model\ItemProvider\CmsPage">
+		<plugin disabled="false" name="Infosys_AemBase_Plugin_Magento_Sitemap_Model_ItemProvider_CmsPage" sortOrder="10" type="Infosys\AemBase\Plugin\Magento\Sitemap\Model\ItemProvider\CmsPage"/>
+	</type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Product">
+		<plugin disabled="false" name="Infosys_AemBase_Plugin_Magento_Sitemap_Model_ResourceModel_Catalog_Product" sortOrder="10" type="Infosys\AemBase\Plugin\Magento\Sitemap\Model\ResourceModel\Catalog\Product"/>
+	</type>
+
+    <!-- Couldn't avoid a preference here because one of the functions are protected -->
+	<preference for="Magento\Sitemap\Model\Sitemap" type="Infosys\AemBase\Rewrite\Magento\Sitemap\Model\Sitemap"/>
+</config>

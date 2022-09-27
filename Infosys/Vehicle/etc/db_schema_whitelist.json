@@ -1,0 +1,84 @@
+{
+    "catalog_vehicle_entity": {
+        "column": {
+            "entity_id": true,
+            "title": true,
+            "brand": true,
+            "model_year": true,
+            "model_code": true,
+            "series_name": true,
+            "grade": true,
+            "driveline": true,
+            "body_style": true,
+            "engine_type": true,
+            "model_range": true,
+            "model_description": true,
+            "transmission": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "CATALOG_VEHICLE_ENTITY_MODEL_YEAR": true,
+            "CATALOG_VEHICLE_ENTITY_MODEL_CODE": true,
+            "CATALOG_VEHICLE_ENTITY_BRAND": true,
+            "CATALOG_VEHICLE_ENTITY_SERIES_NAME": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CATALOG_VEHICLE_ENTITY_MODEL_YEAR_MODEL_CODE": true,
+            "CATALOG_VEHICLE_ENTITY_MODEL_YEAR_SERIES_NAME_DRIVELINE_GRADE": true
+        }
+    },
+    "catalog_vehicle_product": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "vehicle_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CATALOG_VEHICLE_PRODUCT_PRODUCT_ID_VEHICLE_ID": true,
+            "CAT_VEHICLE_PRD_VEHICLE_ID_CAT_VEHICLE_ENTT_ENTT_ID": true,
+            "CAT_VEHICLE_PRD_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true
+        }
+    },
+    "vehicle_fits_queue": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "store_id": true,
+            "product_flag": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vehicle_schedule_tasks": {
+        "column": {
+            "entity_id": true,
+            "file_name": true,
+            "file_type": true,
+            "status": true,
+            "created_at": true,
+            "scheduled_at": true,
+            "created_at_sftp": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "VEHICLE_SCHEDULE_TASKS_FILE_NAME": true
+        }
+    },
+    "vehicle_data_replace": {
+        "column": {
+            "entity_id": true,
+            "attribute": true,
+            "find": true,
+            "replace": true,
+            "priority": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

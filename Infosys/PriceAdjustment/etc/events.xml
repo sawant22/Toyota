@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="catalog_product_save_after">
+		<observer name="my_custom_product_save_observer" instance="Infosys\PriceAdjustment\Observer\UpdateProductQueue" />
+	</event>
+	<event name="catalog_product_import_bunch_save_after">
+		<observer name="special_price_product_save_observer" instance="Infosys\PriceAdjustment\Observer\ProductQueue" />
+	</event>
+</config>

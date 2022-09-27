@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright � 2021. All Rights Reserved.
+ */
+?>
+<?php
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$_item = $block->getItem() ?>
+<tr class="border">
+    <td class="col-product"><?= $block->getColumnHtml($_item, 'name') ?></td>
+    <td class="col-shipped-part-number "><?= /* @noEscape */ $_item->getShippedPartNumber() ?></td>
+    <td class="col-qty "><?= /* @noEscape */ $_item->getQty() * 1 ?></td>
+</tr>

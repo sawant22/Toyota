@@ -1,0 +1,5 @@
+brand,model_year,model_code,series_name,grade,driveline,body_style,engine_type,model_range,model_description,transmission,title
+TOYOTA,2014,4432,RAV4,LE,4WD,5Dr. Wagon,L4,,,6AT,
+LEXUS,2014,9510,IS 250 AND IS 350,NON-GRADE,2WD,4Dr. Sedan,V6,,,8AT,
+LEXUS,2011,9810,HS 250 H,PREMIUM,2WD,4Dr. Sedan,Hybrid,,,CVT-1,
+TOYOTA,2009,8216,Tundra,SR5,2WD,Double Cab,V6,,,5AT,

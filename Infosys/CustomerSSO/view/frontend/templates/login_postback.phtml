@@ -1,0 +1,25 @@
+<?php
+/**
+ * @package   Infosys/CustomerSSO
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<div style="text-align:center;">
+    <span>Please wait while we log you in.</span>
+</div>
+<form enctype="text/plain" id="login-postback" method="POST" action="<?= $block->escapeUrl($block->getData('action')); ?>">
+    <input type="hidden" name="PHPSESSID" value="<?= $block->escapeHtmlAttr($block->getData('sessionId')); ?>">
+    <input type="submit" style="display:none">
+</form>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Infosys_CustomerSSO/js/login-postback": {}
+    }
+}
+</script>

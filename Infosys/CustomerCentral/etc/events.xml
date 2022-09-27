@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/CustomerCentral
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="pitbulk_saml2_customer_successfully_updated">
+        <observer name="sync_cc_on_login" instance="Infosys\CustomerCentral\Observer\SyncCCLogin" />
+    </event>
+    <event name="customer_save_after_data_object">
+        <observer name="sync_cc_on_register" instance="Infosys\CustomerCentral\Observer\SyncCCRegister" />
+    </event>
+    <event name="sales_order_place_after">
+        <observer name="sync_cc_on_order_place" instance="Infosys\CustomerCentral\Observer\OrderPlaceAfter" />
+    </event>
+</config>

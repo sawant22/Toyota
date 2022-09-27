@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DirectFulFillment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="direct_fulfillment_status" xsi:type="string">sales_order.direct_fulfillment_status</item>
+                <item name="service_fee" xsi:type="string">sales_order.service_fee</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    
+    <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save" type="Infosys\DirectFulFillment\Controller\Adminhtml\Shipment\Save" />
+    <preference for="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save" type="Infosys\DirectFulFillment\Controller\Adminhtml\Invoice\Save" />	
+    <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Infosys\DirectFulFillment\Block\Adminhtml\Order\Tracking\View" />
+    <preference for="Xtento\TrackingImport\Model\Import\Action\Order\Status"  type="Infosys\DirectFulFillment\Model\Status" />
+    <preference for="Xtento\OrderExport\Model\Export\Data\Shared\Customer"  type="Infosys\DirectFulFillment\Model\Export\Data\Shared\Customer" />
+    <preference for="Xtento\TrackingImport\Model\Import\Action\Order\Shipment"  type="Infosys\DirectFulFillment\Model\Import\Action\Order\Shipment" />
+    <preference for="Xtento\TrackingImport\Model\Import\Action\Order\Invoice"  type="Infosys\DirectFulFillment\Model\Import\Action\Order\Invoice" />
+
+    <type name="Infosys\DirectFulFillment\Logger\DDOALogger">
+        <arguments>
+            <argument name="name" xsi:type="string">DDOALogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Infosys\DirectFulFillment\Logger\DDOAHandler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

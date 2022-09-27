@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/SalesReport
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="toyota_dealer_sales_statistics" resource="default" engine="innodb" comment="Dealer Sales Statistics">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="date" name="report_date" nullable="false" comment="Date"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store Id"/>
+        <column xsi:type="int" name="orders_qty" unsigned="true" nullable="true" comment="Orders Quantity"/>
+        <column xsi:type="decimal" name="product_sales" nullable="true" scale="4" precision="20" comment="Product Sales"/>
+        <column xsi:type="decimal" name="percent_parts" nullable="true" scale="4" precision="20" comment="Precent Parts"/>
+        <column xsi:type="decimal" name="percent_accessories" nullable="true" scale="4" precision="20" comment="Precent Accessories"/>
+        <column xsi:type="decimal" name="shipping_sales" nullable="true" scale="4" precision="20" comment="Shipping Sales"/>
+        <column xsi:type="decimal" name="total_net_sales" nullable="true" scale="4" precision="20" comment="Total Net Sales"/>
+        <column xsi:type="decimal" name="total_gross_sales" nullable="true" scale="4" precision="20" comment="Total Gross Sales"/>
+        <column xsi:type="decimal" name="product_gross_profit" nullable="true" scale="4" precision="20" comment="Product Gross Profit"/>
+        <column xsi:type="decimal" name="shipping_gross_profit" nullable="true" scale="4" precision="20" comment="Shipping Gross Profit"/>
+        <column xsi:type="decimal" name="total_gross_profit" nullable="true" scale="4" precision="20" comment="Total Gross Profit"/>
+        <column xsi:type="decimal" name="gross_profit_per_order" nullable="true" scale="4" precision="20" comment="Gross Profit Per Order"/>
+        <column xsi:type="decimal" name="product_gross_profit_percent" nullable="true" scale="4" precision="20" comment="Product Gross Profit Percent"/>
+        <column xsi:type="decimal" name="total_gross_profit_percent" nullable="true" scale="4" precision="20" comment="Total Gross Profit Percent"/>
+        <column xsi:type="decimal" name="total_discount" nullable="true" scale="4" precision="20" comment="Total Discount"/>
+        <column xsi:type="int" name="time_to_receive" unsigned="true" nullable="true" comment="Time to Receive"/>
+        <column xsi:type="int" name="time_to_ship" unsigned="true" nullable="true" comment="Time to Ship"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="TOYOTA_DEALER_SALES_STATISTICS_STORE_ID_REPORT_DATE">
+            <column name="store_id"/>
+            <column name="report_date"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TOYOTA_DEALER_SALES_STATISTICS_STORE_ID_STORE_STORE_ID"
+                    table="toyota_dealer_sales_statistics" column="store_id" referenceTable="store"
+                    referenceColumn="store_id" onDelete="CASCADE"/>
+        <index referenceId="INDEX_TOYOTA_DEALER_SALES_STATISTICS_REPORT_DATE" indexType="btree">
+            <column name="report_date"/>
+        </index>
+        <index referenceId="INDEX_TOYOTA_DEALER_SALES_STATISTICS_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+    </table>
+    <table name="toyota_dealer_sales_statistics_queue" resource="default" engine="innodb" comment="Dealer Sales Statistics Queue Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+		<column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store Id"/>
+		<column xsi:type="date" name="report_date" nullable="false" comment="Date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TOYOTA_DEALER_SALES_STATISTICS_QUEUE_STORE_ID_STORE_STORE_ID"
+                    table="toyota_dealer_sales_statistics_queue" column="store_id" referenceTable="store"
+                    referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+</schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Infosys/SalesReport
+ * @version   1.0.0
+ * @author    Infosys Limited
+ * @copyright Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sales_report_config>
+            <logging_errors>
+                <active>0</active>
+            </logging_errors>
+            <sales_report_max_records>
+                <maximum_records_count>100</maximum_records_count>
+            </sales_report_max_records>
+        </sales_report_config>        
+    </default>
+</config>

@@ -1,0 +1,35 @@
+type Mutation {
+    checkoutVINData(input: CheckoutVINDataInput) : [CheckoutVINDataOutput] @resolver(class:"Infosys\\CheckoutVIN\\Model\\Resolver\\Checkout\\CheckoutVIN")
+}
+input CheckoutVINDataInput {
+    cartId: String
+    vin_number: [String]
+}
+
+type CheckoutVINDataOutput {
+    vin_number: String
+    vehicle_name: String
+    message: String
+}
+
+type Cart {
+    vin_details: [QuoteVINData] @doc(description: "Quote VIN details") @resolver(class:"Infosys\\CheckoutVIN\\Model\\Resolver\\Quote\\QuoteVinDetails")
+}
+
+type QuoteVINData {
+    vin_number : String
+    vehicle_name: String
+}
+
+type CustomerOrder @doc(description: "Contains details about each of the customer's orders") {
+    vin_details: [OrderVINData] @doc(description: "Order VIN details") @resolver(class:"Infosys\\CheckoutVIN\\Model\\Resolver\\Order\\OrderVinDetails")
+}
+
+type OrderSuccessDetail @doc(description: "Contains details about each of the orders associated with the guest customer.") {
+    vin_details: [OrderVINData] @doc(description: "Order VIN details") @resolver(class:"Infosys\\CheckoutVIN\\Model\\Resolver\\Order\\OrderVinDetails")
+}
+
+type OrderVINData {
+    vin_number : String
+    vehicle_name: String
+}

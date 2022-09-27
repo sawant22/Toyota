@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/AdminRole
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- overrding the file to include additional form fields for website selection -->
+    <preference for="Magento\User\Block\User\Edit\Tab\Main" type="Infosys\AdminRole\Block\User\Edit\Tab\Main" />
+    <!-- overrding the file to change the website permission from role to user level-->
+    <type name="Magento\AdminGws\Model\Role">
+        <plugin name="user_website_permission" type="Infosys\AdminRole\Plugin\Model\Role" />
+    </type>
+    <!-- overrding the file to assign website permission from user website data -->
+    <type name="Magento\AdminGws\Observer\RolePermissionAssigner">
+        <plugin name="assign_website_permission" type="Infosys\AdminRole\Plugin\Observer\RolePermissionAssigner" />
+    </type>
+    <!-- overriding the file to filter user collection based on website -->
+    <type name="Magento\AdminGws\Model\ResourceModel\Collections">
+        <plugin name="filter_user_collection" type="Infosys\AdminRole\Plugin\Model\ResourceModel\Collections" />
+    </type>
+     <!-- overrding the file to include website mapping in sso login -->
+    <preference for="Pitbulk\SAML2\Observer\AdminLoginObserver" type="Infosys\AdminRole\Observer\AdminLoginObserver" />
+</config>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/CreateWebsite
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- overrding the file to include dealer_code form fields for website -->
+    <preference for="Magento\Backend\Block\System\Store\Edit\Form\Website" type="Infosys\CreateWebsite\Block\Store\Edit\Form\Website" />
+    <preference for="Infosys\CreateWebsite\Api\TRDRepositoryInterface" type="Infosys\CreateWebsite\Model\TRDRepository" />
+    <preference for="Infosys\CreateWebsite\Api\Data\TRDInterface" type="Infosys\CreateWebsite\Model\TRD" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="trd_grid_data_source" xsi:type="string">InfosysCreateWebsiteTRDCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="InfosysCreateWebsiteTRDCollection" type="Infosys\CreateWebsite\Ui\DataProvider\TRD\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">toyota_dealer_regions</argument>
+            <argument name="resourceModel" xsi:type="string">Infosys\CreateWebsite\Model\ResourceModel\TRD</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/OrderAttribute
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\QuoteGraphQl\Model\Resolver\AddProductsToCart">
+        <plugin name="add_custom_fields_to_quote_item" type="Infosys\OrderAttribute\Plugin\Model\Resolver\AddProductsToCart" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="save_quote_items_to_order_items" type="Infosys\OrderAttribute\Plugin\Model\Quote\ToOrderItem"/>
+    </type>
+    <type name="Magento\SalesGraphQl\Model\Order\OrderPayments">
+        <plugin name="add_card_details" type="Infosys\OrderAttribute\Plugin\Model\Order\OrderPayments"/>
+    </type>
+</config>

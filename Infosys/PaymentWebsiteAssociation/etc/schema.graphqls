@@ -1,0 +1,29 @@
+type Customer {
+    stripe_id: String @resolver(class: "Infosys\\PaymentWebsiteAssociation\\Model\\Resolver\\Stripe")
+	secret_key: String @resolver(class: "Infosys\\PaymentWebsiteAssociation\\Model\\Resolver\\StripeSecret")
+}
+
+type Query {
+    cardDetails: [CardList] @resolver(class: "Infosys\\PaymentWebsiteAssociation\\Model\\Resolver\\CardList") @doc(description: "Query to returns card list of a cusotmer")
+}
+
+type CardList @doc(description: "Card list data") {
+    cc_brand: String @doc(description: "CC Brand")
+    cc_country: String @doc(description: "CC country")
+    cc_last4: String @doc(description: "CC Last-4")
+    cc_exp_year: String @doc(description: "CC Expiration Year")
+    cc_exp_month: String @doc(description: "CC Expiration Month")
+    cc_type: String @doc(description: "CC type")
+	token: String @doc(description: "CC token")
+	website_name: String @doc(description: "Website name")
+	website_id: String @doc(description: "Website id")
+}
+
+type Mutation {
+    deleteCard(hash: String!): String @resolver(class: "Infosys\\PaymentWebsiteAssociation\\Model\\Resolver\\DeleteCard") @doc(description: "Delete a stored card")
+}
+
+type TokenBaseCard @doc(description: "A stored payment account/credit card.") {
+    website_id: String @doc(description: "Website id")
+    website_name: String @resolver(class: "Infosys\\PaymentWebsiteAssociation\\Model\\Resolver\\WebsiteName") @doc(description: "Website name")
+}

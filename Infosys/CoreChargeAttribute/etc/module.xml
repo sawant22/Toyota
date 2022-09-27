@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package     Infosys/CoreChargeAttribute
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Infosys_CoreChargeAttribute" setup_version="1.0.0">
+                <sequence>
+                        <module name="Infosys_DirectFulFillment"/>
+                </sequence>
+        </module>
+</config>

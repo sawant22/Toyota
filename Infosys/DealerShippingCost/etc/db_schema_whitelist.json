@@ -1,0 +1,16 @@
+{
+    "df_sales_order_freight_recovery": {
+        "column": {
+            "action": true,
+            "shipment_id": true
+        },
+        "constraint": {
+            "FK_FABEB13B0B1038168D48A2D5A1F8E74B": true
+        }
+    },
+    "sales_shipment": {
+        "column": {
+            "shipment_action": true
+        }
+    }
+}

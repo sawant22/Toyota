@@ -1,0 +1,63 @@
+<!--
+/**
+ * @package     Infosys/PriceAdjustment
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="toyota" translate="label" class="a-custom-css-class-to-style-this-tab" sortOrder="10">
+            <label>Toyota</label>
+        </tab>
+
+        <section id="discount" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10" translate="label">
+            <label>Price Configuration</label>
+            <tab>toyota</tab>
+            <resource>Infosys_PriceAdjustment::price_percentage</resource>
+
+            <group id="discount_configuration" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Price Configuration</label>
+                <comment></comment>
+
+                <field id="max_percentage" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>MSRP Minus percent maximum</label>
+                    <comment>Percentage should be in number format eg: 20</comment>
+                    <validate>validate-number no-whitespace validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+
+                <field id="min_percentage" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" type="text">
+                    <label>Cost Plus percent minimum</label>
+                    <comment>Percentage should be in number format eg: 20</comment>
+                    <validate>validate-number no-whitespace validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+                <field id="maximum_product_count" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Special Price Update Product Count</label>
+                    <comment>This configuration will be used when we update product tier price set with product import, based on the count we are updating special price for the product</comment>
+                </field>
+                <field id="enable_cronjob" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Cron For Media Set Selector Options</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="price_calc_cronjob" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Cron For Dealer price Calculation during import</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tier_price_import" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Tier Price Import During Product Import</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                 <field id="tier_price_import_rabbitmq" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable RabbitMQ To Calculate Tier Prices</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                       <comment>Please Enable This Configuration If You Want To Use RabbitMQ For Tier Price Calculation. If Select As NO, Default Cron Job Will Be Used For Tier Price Calculation</comment>
+                </field>
+                <field id="enable_logging" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Logs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

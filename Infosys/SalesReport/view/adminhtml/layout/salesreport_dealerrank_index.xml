@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/SalesReport
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <link src="Infosys_SalesReport::js/dealerrank.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Infosys\SalesReport\Block\Adminhtml\Dealerrank\Form" name="dealerrank_form">
+            </block>
+            <block class="Infosys\SalesReport\Block\Adminhtml\Dealerrank\Grid" name="dealerrank_grid">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

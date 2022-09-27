@@ -1,0 +1,12 @@
+{
+    "sales_order": {
+        "column": {
+            "vin_details": true
+        }
+    },
+    "quote": {
+        "column": {
+			"vin_details": true
+        }
+    }
+}

@@ -1,0 +1,46 @@
+type Query {
+    orderSuccessDetails(
+        orderId: String!
+    ): OrderSuccessDetails @doc(description: "Retrieves the order associated with the specified order id. Throws an error if the order is not found or there isn't an order associated with it.") @resolver(class: "Infosys\\CustomerWebsiteOrders\\Model\\Resolver\\SuccessOrders") @cache(cacheable: false)
+}
+
+type OrderSuccessDetails @doc(description: "The collection of orders that are associated with the guest cart.") {
+    items: [OrderSuccessDetail]! @doc(description: "An array of guest orders")
+}
+
+type OrderSuccessDetail @doc(description: "Contains details about each of the orders associated with the guest customer.") {
+    id: ID! @doc(description: "Unique identifier for the order")
+    order_date: String! @doc(description: "The date the order was placed")
+    status: String! @doc(description: "The current status of the order")
+    number: String! @doc(description: "The order number")
+    items: [OrderItemInterface] @doc(description: "An array containing the items purchased in this order") @resolver(class: "Infosys\\CustomerWebsiteOrders\\Model\\Resolver\\SuccessOrdersItems")
+    total: OrderTotal @doc(description: "Contains details about the calculated totals for this order") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\OrderTotal")
+    shipments: [OrderShipment] @doc(description: "A list of shipments for the order") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\Shipments")
+    payment_methods: [OrderPaymentMethod] @doc(description: "Payment details for the order")
+    shipping_address: OrderAddress @doc(description: "The shipping address for the order")
+    billing_address: OrderAddress @doc(description: "The billing address for the order")
+    carrier: String @doc(description: "The shipping carrier for the order delivery") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\CustomerOrders\\Carrier")
+    shipping_method: String @doc(description: "The delivery method for the order")
+    comments: [SalesCommentItem] @doc(description: "Comments about the order")
+    increment_id: String @deprecated(reason: "Use the id attribute instead")
+    order_number: String! @deprecated(reason: "Use the number attribute instead")
+    created_at: String @deprecated(reason: "Use the order_date attribute instead")
+    grand_total: Float  @deprecated(reason: "Use the totals.grand_total attribute instead")
+    email: String! @doc(description: "The email set on the guest cart.")
+    dealerInformation: DealerInformation @resolver(class: "Infosys\\OrderAttribute\\Model\\Resolver\\Order\\OrderWebsiteDetails")
+}
+
+type DealerInformation {
+    dealer_name: String
+    street_address: String
+    region: String
+    city: String
+    country: String
+    postcode: String
+    phone_number: String
+    store_email: String
+}
+
+interface OrderItemInterface @doc(description: "Order item details") @typeResolver(class: "Magento\\SalesGraphQl\\Model\\TypeResolver\\OrderItem") { 
+    categories: [CategoryInterface] @doc(description: "The categories assigned to a product.") @resolver(class: "Infosys\\CustomerWebsiteOrders\\Model\\Resolver\\Order\\ItemsCategories")  @cache(cacheIdentity: "Magento\\CatalogGraphQl\\Model\\Resolver\\Category\\CategoriesIdentity")
+}

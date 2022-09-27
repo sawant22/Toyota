@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Infosys/DealerShippingCost
+ * @version     1.0.0
+ * @author      Infosys Limited
+ * @copyright   Copyright © 2021. All Rights Reserved.
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="df_sales_order_freight_recovery" resource="default" engine="innodb" comment="Direct Sales Order Freight Recovery">
+        <column xsi:type="varchar" name="action" nullable="false" length="255" comment="Action"/>
+        <column xsi:type="int" name="shipment_id" nullable="true" unsigned="true" default="null" comment="Shipment Id"/>
+        <constraint xsi:type="foreign" referenceId="DF_SALES_ORDER_FREIGHT_RECOVERY_SHIPMENT_ID_SALES_SHIPMENT_ENTITY_ID"
+                    table="df_sales_order_freight_recovery" column="shipment_id" referenceTable="sales_shipment"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+	<table name="sales_shipment" resource="sales" engine="innodb" comment="Sales Flat Shipment">
+		<column xsi:type="varchar" name="shipment_action" nullable="false" length="255" comment="Shipment Action"/>
+	</table>
+</schema>

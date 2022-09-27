@@ -1,0 +1,8 @@
+{
+    "admin_user": {
+        "column": {
+            "website_ids": true,
+            "all_website": true
+        }
+    }
+}
